@@ -1,0 +1,289 @@
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
+import { Card, CardContent } from "../ui/card"
+import { Badge } from "../ui/badge"
+import {
+  Leaf,
+  TreePine,
+  Droplets,
+  Sun,
+  Recycle,
+  Wind,
+  Users,
+  Target,
+  TrendingUp,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react"
+
+export default function Landing() {
+  return (
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 to-white">
+      {/* Header */}
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-green-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+        <a href="/" className="flex items-center justify-center">
+          <Leaf className="h-8 w-8 text-green-600" />
+          <span className="ml-2 text-xl font-bold text-green-800">EcoVision</span>
+        </a>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <a href="#about" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            Sobre Nosotros
+          </a>
+          <a href="#solutions" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            Soluciones
+          </a>
+          <a href="#impact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            Impacto
+          </a>
+          <a href="#contact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            Contacto
+          </a>
+          <a href="/login" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            Iniciar Sesion
+          </a>
+        </nav>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <Badge className="bg-green-100 text-green-800 hover:bg-green-200 w-fit">🌱 Sustainable Future</Badge>
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-green-900">
+                    Building a Greener Tomorrow, Today
+                  </h1>
+                  <p className="max-w-[600px] text-green-700 md:text-xl">
+                    Join the movement towards sustainable living. Discover innovative eco-solutions that protect our
+                    planet while creating a better future for generations to come.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+                    Start Your Journey
+                    <Leaf className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-50">
+                    Learn More
+                  </Button>
+                </div>
+                <div className="flex items-center gap-4 text-sm text-green-600">
+                  <div className="flex items-center gap-1">
+                    <Users className="h-4 w-4" />
+                    <span>50K+ Members</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <TreePine className="h-4 w-4" />
+                    <span>1M+ Trees Planted</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-3xl opacity-20"></div>
+                  <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop&crop=center"
+                    width="400"
+                    height="400"
+                    alt="Sustainable Earth"
+                    className="relative rounded-full border-4 border-green-200 object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="solutions" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <Badge className="bg-emerald-100 text-emerald-800 w-fit">Our Solutions</Badge>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-900">
+                  Comprehensive Eco Solutions
+                </h2>
+                <p className="max-w-[900px] text-green-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  From renewable energy to waste reduction, we provide integrated solutions for a sustainable lifestyle.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+              <Card className="border-green-200 hover:border-green-300 transition-colors">
+                <CardContent className="flex flex-col items-center space-y-4 p-6">
+                  <div className="rounded-full bg-green-100 p-3">
+                    <Sun className="h-8 w-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900">Renewable Energy</h3>
+                  <p className="text-center text-green-700">
+                    Harness the power of solar, wind, and other renewable sources to reduce your carbon footprint.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-green-200 hover:border-green-300 transition-colors">
+                <CardContent className="flex flex-col items-center space-y-4 p-6">
+                  <div className="rounded-full bg-emerald-100 p-3">
+                    <Recycle className="h-8 w-8 text-emerald-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900">Waste Management</h3>
+                  <p className="text-center text-green-700">
+                    Smart recycling and composting solutions that turn waste into valuable resources.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-green-200 hover:border-green-300 transition-colors">
+                <CardContent className="flex flex-col items-center space-y-4 p-6">
+                  <div className="rounded-full bg-teal-100 p-3">
+                    <Droplets className="h-8 w-8 text-teal-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900">Water Conservation</h3>
+                  <p className="text-center text-green-700">
+                    Advanced systems for water purification, collection, and efficient usage management.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Impact Statistics */}
+        <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">Our Environmental Impact</h2>
+                <p className="max-w-[900px] text-green-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Together, we're making a measurable difference for our planet.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-4 lg:gap-12">
+              <div className="flex flex-col items-center space-y-2 text-center">
+                <TreePine className="h-12 w-12 text-green-200" />
+                <div className="text-4xl font-bold text-white">1.2M</div>
+                <p className="text-green-100">Trees Planted</p>
+              </div>
+              <div className="flex flex-col items-center space-y-2 text-center">
+                <Wind className="h-12 w-12 text-green-200" />
+                <div className="text-4xl font-bold text-white">500K</div>
+                <p className="text-green-100">Tons CO₂ Reduced</p>
+              </div>
+              <div className="flex flex-col items-center space-y-2 text-center">
+                <Droplets className="h-12 w-12 text-green-200" />
+                <div className="text-4xl font-bold text-white">2.5M</div>
+                <p className="text-green-100">Gallons Water Saved</p>
+              </div>
+              <div className="flex flex-col items-center space-y-2 text-center">
+                <Users className="h-12 w-12 text-green-200" />
+                <div className="text-4xl font-bold text-white">50K+</div>
+                <p className="text-green-100">Community Members</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <Badge className="bg-green-100 text-green-800 w-fit">About EcoVision</Badge>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-900">
+                    Leading the Green Revolution
+                  </h2>
+                  <p className="max-w-[600px] text-green-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    For over a decade, we've been at the forefront of environmental innovation, developing sustainable
+                    solutions that benefit both people and the planet.
+                  </p>
+                </div>
+                <ul className="grid gap-2 py-4">
+                  <li className="flex items-center gap-2">
+                    <Target className="h-5 w-5 text-green-600" />
+                    <span className="text-green-700">Carbon-neutral operations by 2025</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <span className="text-green-700">95% renewable energy usage</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Recycle className="h-5 w-5 text-green-600" />
+                    <span className="text-green-700">Zero waste to landfill policy</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop&crop=center"
+                  width="400"
+                  height="400"
+                  alt="Green Innovation"
+                  className="aspect-square overflow-hidden rounded-xl object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-green-100">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-900">
+                  Ready to Make a Difference?
+                </h2>
+                <p className="max-w-[600px] text-green-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Join thousands of eco-warriors who are already making a positive impact on our planet.
+                </p>
+              </div>
+              <div className="w-full max-w-sm space-y-2">
+                <form className="flex gap-2">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 border-green-300 focus:border-green-500"
+                  />
+                  <Button type="submit" className="bg-green-600 hover:bg-green-700">
+                    Join Now
+                  </Button>
+                </form>
+                <p className="text-xs text-green-600">Get weekly eco-tips and updates. No spam, unsubscribe anytime.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer
+        id="contact"
+        className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-green-200 bg-green-900 text-green-100"
+      >
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 max-w-7xl">
+          <div className="flex items-center gap-2">
+            <Leaf className="h-6 w-6 text-green-400" />
+            <span className="font-bold text-green-100">EcoVision</span>
+          </div>
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-1">
+              <Mail className="h-4 w-4" />
+              <span>hello@ecovision.com</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Phone className="h-4 w-4" />
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <MapPin className="h-4 w-4" />
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
