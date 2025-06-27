@@ -31,8 +31,8 @@ export default function Login() {
               </div>
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-green-900 mb-2">Welcome Back to EcoVision</h1>
-          <p className="text-green-700">Sign in to continue your sustainable journey</p>
+          <h1 className="text-2xl font-bold text-green-900 mb-2">Bienvenido a EcoVision</h1>
+          <p className="text-green-700">Inicia sesion para registrar recolecciones !</p>
         </div>
 
         {/* Login Form */}
@@ -41,7 +41,7 @@ export default function Login() {
             {/* Email Field */}
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium text-green-800">
-                Email Address
+                Direccion de e-mail
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -53,7 +53,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg bg-green-50/50 text-green-900 placeholder-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all"
-                  placeholder="Enter your email"
+                  placeholder="Ingresa tu email"
                   required
                 />
               </div>
@@ -62,7 +62,7 @@ export default function Login() {
             {/* Password Field */}
             <div className="space-y-2">
               <label htmlFor="password" className="text-sm font-medium text-green-800">
-                Password
+                Contraseña
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -74,7 +74,7 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-10 pr-12 py-3 border border-green-200 rounded-lg bg-green-50/50 text-green-900 placeholder-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all"
-                  placeholder="Enter your password"
+                  placeholder="Ingresa tu contraseña"
                   required
                 />
                 <button
@@ -87,7 +87,7 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
+            {/* Remember Me & Forgot Password 
             <div className="flex items-center justify-between">
               <label className="flex items-center">
                 <input
@@ -104,16 +104,18 @@ export default function Login() {
                 Forgot password?
               </button>
             </div>
+            */}
 
             {/* Sign In Button */}
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
-              Sign In
+              Iniciar Sesion
             </button>
 
-            {/* Divider */}
+            {/*
+            {/* Divider 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-green-200"></div>
@@ -123,7 +125,8 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Social Login Buttons */}
+            
+            {/* Social Login Buttons 
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
@@ -159,9 +162,11 @@ export default function Login() {
                 Facebook
               </button>
             </div>
+            */}
           </form>
 
-          {/* Sign Up Link */}
+          {/*
+          {/* Sign Up Link 
           <div className="mt-6 text-center">
             <p className="text-sm text-green-700">
               Don't have an account?{" "}
@@ -173,9 +178,11 @@ export default function Login() {
               </a>
             </p>
           </div>
-        </div>
+          */}
 
-        {/* Footer */}
+        </div>
+        
+        {/* Footer 
         <div className="mt-8 text-center">
           <p className="text-xs text-green-600">
             By signing in, you agree to our{" "}
@@ -188,6 +195,7 @@ export default function Login() {
             </a>
           </p>
         </div>
+        */}
       </div>
     </div>
   )
