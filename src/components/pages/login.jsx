@@ -1,6 +1,7 @@
 
 import { Leaf, Eye, EyeOff, Mail, Lock } from "lucide-react"
 import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { context } from "../context"
 
 export default function Login() {
@@ -11,6 +12,7 @@ export default function Login() {
   const [error, setError] = useState("")
   
   const { setToken, setId, setRol } = useContext(context)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -25,7 +27,6 @@ export default function Login() {
         },
         body: JSON.stringify({username, password }),
       })
-      console.log(JSON.stringify({ username, password }))
 
       const data = await response.json()
 
@@ -45,7 +46,9 @@ export default function Login() {
         }
 
         console.log("Login successful:", data.msg || "Inicio de sesion exitoso!")
-        // Here you can redirect the user or update the UI state
+
+        //A sweet alert can be added here if needed, with 2sec delay
+        navigate("/recolectionForm") // Redirect to the form page
         
       } else {
         setError(data.msg || 'Error en el inicio de sesión')
