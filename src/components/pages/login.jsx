@@ -1,16 +1,61 @@
 
 import { Leaf, Eye, EyeOff, Mail, Lock } from "lucide-react"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { context } from "../context"
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+  
+  const { setToken, setId, setRol } = useContext(context)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log("Login attempt:", { email, password })
+    setIsLoading(true)
+    setError("")
+
+    try {
+      const response = await fetch(import.meta.env.VITE_LOGIN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, password }),
+      })
+      console.log(JSON.stringify({ username, password }))
+
+      const data = await response.json()
+
+      if (response.ok && data.token) {
+        // Save token to context and localStorage
+        setToken(data.token)
+        localStorage.setItem('authToken', data.token)
+        
+        // If the response includes user info, save it too
+        if (data.userId) {
+          setId(data.userId)
+          localStorage.setItem('userId', data.userId)
+        }
+        if (data.userRol) {
+          setRol(data.userRol)
+          localStorage.setItem('userRol', data.userRol)
+        }
+
+        console.log("Login successful:", data.msg || "Inicio de sesion exitoso!")
+        // Here you can redirect the user or update the UI state
+        
+      } else {
+        setError(data.msg || 'Error en el inicio de sesión')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setError('Error de conexión. Intenta nuevamente.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleForgotPassword = () => {
@@ -37,6 +82,12 @@ export default function Login() {
 
         {/* Login Form */}
         <div className="bg-white rounded-2xl shadow-xl border border-green-100 p-8">
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-600">{error}</p>
+            </div>
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field */}
             <div className="space-y-2">
@@ -50,8 +101,8 @@ export default function Login() {
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg bg-green-50/50 text-green-900 placeholder-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all"
                   placeholder="Ingresa tu email"
                   required
@@ -109,9 +160,10 @@ export default function Login() {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              Iniciar Sesion
+              {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesion'}
             </button>
 
             {/*
