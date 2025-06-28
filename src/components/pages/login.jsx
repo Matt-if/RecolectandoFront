@@ -3,6 +3,7 @@ import { Leaf, Eye, EyeOff, Mail, Lock } from "lucide-react"
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { context } from "../context"
+import { jwtDecode } from "jwt-decode";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
@@ -34,18 +35,8 @@ export default function Login() {
         // Save token to context and localStorage
         setToken(data.token)
         localStorage.setItem('authToken', data.token)
-        
-        // If the response includes user info, save it too
-        if (data.userId) {
-          setId(data.userId)
-          localStorage.setItem('userId', data.userId)
-        }
-        if (data.userRol) {
-          setRol(data.userRol)
-          localStorage.setItem('userRol', data.userRol)
-        }
-
-        console.log("Login successful:", data.msg || "Inicio de sesion exitoso!")
+        // localStorage.setItem('userId', data.userId || "")
+        // localStorage.setItem('userRol', data.userRol || "")
 
         //A sweet alert can be added here if needed, with 2sec delay
         navigate("/recolectionForm") // Redirect to the form page

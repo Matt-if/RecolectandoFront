@@ -45,7 +45,7 @@ export default function RecoForm() {
     fetchEdificios()
   }, [])
 
-  // Fetch sectores when edificio changes
+  // Fetch sectors when edificio changes
   useEffect(() => {
     if (formData.edificioId) {
       fetchSectores(formData.edificioId)
@@ -55,9 +55,10 @@ export default function RecoForm() {
     }
   }, [formData.edificioId])
 
+
   const fetchTiposResiduos = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/v1/tiposResiduos")
+      const response = await fetch(import.meta.env.VITE_API_URL + "/retrievals/types")
       if (response.ok) {
         const data = await response.json()
         setTiposResiduos(data)
@@ -69,9 +70,10 @@ export default function RecoForm() {
     }
   }
 
+
   const fetchEdificios = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/v1/edificios")
+      const response = await fetch(import.meta.env.VITE_API_URL + `/buildings/summary`)
       if (response.ok) {
         const data = await response.json()
         setEdificios(data)
@@ -85,7 +87,7 @@ export default function RecoForm() {
 
   const fetchSectores = async (edificioId) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/edificio-sectores/${edificioId}`)
+      const response = await fetch(import.meta.env.VITE_API_URL + `/${edificioId}/sector/summary`)
       if (response.ok) {
         const data = await response.json()
         setSectores(data)
@@ -108,10 +110,9 @@ export default function RecoForm() {
   const validateForm = () => {
     const newErrors = {}
 
-    // At least one of peso or volumen must be filled
-    if (!formData.peso && !formData.volumen) {
-      newErrors.peso = "Debe completar al menos Peso o Volumen"
-      newErrors.volumen = "Debe completar al menos Peso o Volumen"
+    // Peso is always required
+    if (!formData.peso) {
+      newErrors.peso = "Debe ingresar peso"
     }
 
     // Required fields
