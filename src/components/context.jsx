@@ -9,7 +9,6 @@ const CustomProvider = (props) => {
     const [id, setId] = useState(() => localStorage.getItem("userId") || null);
     const [token, setToken] = useState(() => localStorage.getItem("authToken") || null);
 
-
     const ctx = {
   
         rol : rol,
@@ -19,7 +18,7 @@ const CustomProvider = (props) => {
         token : token,
         setToken : setToken
   
-    }  
+    }
 
     return (
         <Provider value={ctx}>

@@ -35,8 +35,13 @@ export default function Login() {
         // Save token to context and localStorage
         setToken(data.token)
         localStorage.setItem('authToken', data.token)
-        // localStorage.setItem('userId', data.userId || "")
-        // localStorage.setItem('userRol', data.userRol || "")
+        const decoded = jwtDecode(data.token);
+
+        //console.log("id from token:", decoded.id);
+        //console.log("rol from token:", decoded.rol);
+
+        localStorage.setItem('userId', decoded.id || "")
+        localStorage.setItem('userRol', decoded.rol || "")
 
         //A sweet alert can be added here if needed, with 2sec delay
         navigate("/recolectionForm") // Redirect to the form page

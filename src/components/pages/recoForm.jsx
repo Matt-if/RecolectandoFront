@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { context } from "../context"
 import {
   Leaf,
   Scale,
@@ -16,14 +17,20 @@ import {
 
 export default function RecoForm() {
   const navigate = useNavigate()
+  const { token, id } = useContext(context) // Get token and user ID from context
 
   // Form state
   const [formData, setFormData] = useState({
     peso: "",
     volumen: "",
     tipoResiduoId: "",
-    fecha: new Date().toISOString().split("T")[0], // Today's date in YYYY-MM-DD format
-    hora: new Date().toTimeString().slice(0, 5), // Current time in HH:MM format
+    fecha: new Date().toLocaleDateString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' }), // ART timezone in YYYY-MM-DD format
+    hora: new Date().toLocaleTimeString('en-GB', { 
+      timeZone: 'America/Argentina/Buenos_Aires',
+      hour12: false,
+      hour: '2-digit', 
+      minute: '2-digit' 
+    }), // ART timezone in HH:MM format
     observaciones: "",
     edificioId: "",
     sectorId: "",
@@ -60,8 +67,8 @@ export default function RecoForm() {
     try {
       const response = await fetch(import.meta.env.VITE_API_URL + "/retrievals/types")
       if (response.ok) {
-        const data = await response.json()
-        setTiposResiduos(data)
+        const result = await response.json()
+        setTiposResiduos(result.data) // Access the data array from the response
       } else {
         setApiError("Error al cargar tipos de residuos")
       }
@@ -75,8 +82,8 @@ export default function RecoForm() {
     try {
       const response = await fetch(import.meta.env.VITE_API_URL + `/buildings/summary`)
       if (response.ok) {
-        const data = await response.json()
-        setEdificios(data)
+        const result = await response.json()
+        setEdificios(result.data)
       } else {
         setApiError("Error al cargar edificios")
       }
@@ -87,10 +94,10 @@ export default function RecoForm() {
 
   const fetchSectores = async (edificioId) => {
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL + `/${edificioId}/sector/summary`)
+      const response = await fetch(import.meta.env.VITE_API_URL + `/buildings/${edificioId}/sector/summary`)
       if (response.ok) {
-        const data = await response.json()
-        setSectores(data)
+        const result = await response.json()
+        setSectores(result.data)
       } else {
         setApiError("Error al cargar sectores")
       }
@@ -125,8 +132,11 @@ export default function RecoForm() {
     // Date validation (only past dates allowed)
     const selectedDate = new Date(formData.fecha)
     const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    if (selectedDate > today) {
+    // Convert today to ART timezone for comparison
+    const todayART = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' })
+    const todayARTDate = new Date(todayART)
+    
+    if (selectedDate > todayARTDate) {
       newErrors.fecha = "Solo se permiten fechas pasadas o la actual"
     }
 
@@ -148,17 +158,43 @@ export default function RecoForm() {
 
     setLoading(true)
     try {
-      // Here you would submit to your backend
-      console.log("Submitting medición:", formData)
+      // Prepare the payload according to the API format
+      const payload = {
+        weight: parseFloat(formData.peso),
+        volume: formData.volumen ? parseFloat(formData.volumen) : 0,
+        observations: formData.observaciones || "",
+        type: formData.tipoResiduoId,
+        date: formData.fecha,
+        time: formData.hora,
+        user_id: parseInt(id), // Get from context
+        sector_id: parseInt(formData.sectorId)
+      }
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log("User ID from context:", id)
+      console.log("Submitting retrieval: ", payload)
 
-      // Success - redirect or show success message
-      alert("Medición guardada exitosamente")
-      navigate("/") // or wherever you want to redirect
+      const response = await fetch(import.meta.env.VITE_API_URL + "/retrievals", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Include auth token
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // Success - show success message and redirect
+        alert("Medición guardada exitosamente")
+        navigate("/") // or wherever you want to redirect
+      } else {
+        // Handle API error
+        setApiError(data.msg || 'Error al guardar la medición')
+      }
     } catch (error) {
-      setApiError("Error al guardar la medición")
+      console.error('Submit error:', error)
+      setApiError("Error de conexión al guardar la medición")
     } finally {
       setLoading(false)
     }
@@ -171,7 +207,8 @@ export default function RecoForm() {
   }
 
   const getMaxDate = () => {
-    return new Date().toISOString().split("T")[0]
+    // Return today's date in ART timezone
+    return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' })
   }
 
   return (
@@ -259,9 +296,9 @@ export default function RecoForm() {
                 }`}
               >
                 <option value="">Seleccionar tipo de residuo</option>
-                {tiposResiduos.map((tipo) => (
-                  <option key={tipo.id} value={tipo.id}>
-                    {tipo.nombre}
+                {tiposResiduos.map((tipo, index) => (
+                  <option key={index} value={tipo.type}>
+                    {tipo.type}
                   </option>
                 ))}
               </select>
@@ -323,7 +360,7 @@ export default function RecoForm() {
                   <option value="">Seleccionar edificio</option>
                   {edificios.map((edificio) => (
                     <option key={edificio.id} value={edificio.id}>
-                      {edificio.nombre}
+                      {edificio.name}
                     </option>
                   ))}
                 </select>
@@ -348,7 +385,7 @@ export default function RecoForm() {
                   </option>
                   {sectores.map((sector) => (
                     <option key={sector.id} value={sector.id}>
-                      {sector.nombre}
+                      {sector.name}
                     </option>
                   ))}
                 </select>
