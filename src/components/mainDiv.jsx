@@ -5,6 +5,7 @@ import Login from "./pages/login";
 import ErrorPage from "./pages/errorPage";
 import RecoForm from "./pages/recoForm";
 import Register from "./pages/register";
+import UserProfile from "./pages/userProfile";
 
 export default function MainDiv(){
     return (
@@ -19,6 +20,12 @@ export default function MainDiv(){
                 <Route path="/recolectionForm" element={
                     <ProtectedRoute>
                         <RecoForm/>
+                    </ProtectedRoute>
+                } />
+
+                <Route path="/userProfile" element={
+                    <ProtectedRoute>
+                        <UserProfile />
                     </ProtectedRoute>
                 } />
 

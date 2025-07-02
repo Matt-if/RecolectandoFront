@@ -42,12 +42,8 @@ export default function Login() {
         localStorage.setItem('userId', decoded.id || "")
         localStorage.setItem('userRol', decoded.rol || "")      
 
-        //console.log("id from token:", decoded.id);
-        //console.log("rol from token:", decoded.rol);
-        //console.log("token saved in context: ", ctx.token);
-
         //A sweet alert can be added here if needed, with 2sec delay
-        navigate("/recolectionForm") // Redirect to the form page
+        navigate("/userProfile") // Redirect to the form page
         
       } else {
         setError(data.msg || 'Error en el inicio de sesión')
