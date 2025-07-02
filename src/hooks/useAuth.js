@@ -1,5 +1,5 @@
 import { useContext, useCallback } from 'react'
-import { context } from '../context'
+import { context } from '../components/context'
 import { jwtDecode } from 'jwt-decode'
 
 export const useAuth = () => {
