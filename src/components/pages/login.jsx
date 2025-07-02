@@ -12,7 +12,8 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   
-  const { setToken, setId, setRol } = useContext(context)
+  const { setToken, setId, setRol } = useContext(context) //estos son los setters que se usan para guardar valores en las variables del contexto
+  const ctx = useContext(context); //con esto se puede acceder al contexto y ver lo que este guardado
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -33,15 +34,17 @@ export default function Login() {
 
       if (response.ok && data.token) {
         // Save token to context and localStorage
-        setToken(data.token)
-        localStorage.setItem('authToken', data.token)
         const decoded = jwtDecode(data.token);
+        setToken(data.token)
+        setId(decoded.id || "")
+        setRol(decoded.rol || "")
+        localStorage.setItem('authToken', data.token)
+        localStorage.setItem('userId', decoded.id || "")
+        localStorage.setItem('userRol', decoded.rol || "")      
 
         //console.log("id from token:", decoded.id);
         //console.log("rol from token:", decoded.rol);
-
-        localStorage.setItem('userId', decoded.id || "")
-        localStorage.setItem('userRol', decoded.rol || "")
+        //console.log("token saved in context: ", ctx.token);
 
         //A sweet alert can be added here if needed, with 2sec delay
         navigate("/recolectionForm") // Redirect to the form page
