@@ -17,24 +17,11 @@ export default function MainDiv(){
                 <Route path="*" element={<ErrorPage />} />
 
                 {/* Rutas para usuarios autenticados - USER o ADMIN */}
-                <Route path="/recolectionForm" element={
-                    <ProtectedRoute>
-                        <RecoForm/>
-                    </ProtectedRoute>
-                } />
-
-                <Route path="/userProfile" element={
-                    <ProtectedRoute>
-                        <UserProfile />
-                    </ProtectedRoute>
-                } />
+                <Route path="/recolectionForm" element={<ProtectedRoute> <RecoForm/> </ProtectedRoute> }/>
+                <Route path="/userProfile" element={<ProtectedRoute> <UserProfile /> </ProtectedRoute> }/>
 
                 {/* Rutas para ADMIN */}
-                <Route path="/register" element={
-                    <ProtectedRoute requiredRoles={['ADMIN']}>
-                        <Register />
-                    </ProtectedRoute>
-                } />
+                <Route path="/register" element={ <ProtectedRoute requiredRoles={['ADMIN']}> <Register /> </ProtectedRoute>} />
             </Routes>
         </div>
     );

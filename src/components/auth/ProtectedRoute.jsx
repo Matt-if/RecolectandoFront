@@ -51,7 +51,7 @@ const ProtectedRoute = ({ children, requiredRoles = [] }) => {
       setIsValidating(false)
 
     } catch (error) {
-      console.error('Error validando token:', error)
+      console.error('Error validando token: ', error)
       clearAuth()
       setIsValid(false)
       setIsValidating(false)
