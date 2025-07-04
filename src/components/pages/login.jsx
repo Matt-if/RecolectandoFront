@@ -43,10 +43,10 @@ export default function Login() {
         localStorage.setItem('userRol', decoded.rol || "")      
 
         //A sweet alert can be added here if needed, with 2sec delay
-        navigate("/userProfile") // Redirect to the form page
+        navigate("/userProfile")
         
       } else {
-        setError(data.msg || 'Error en el inicio de sesión')
+        setError(data.msg || 'Error inesperado en el inicio de sesión')
       }
     } catch (error) {
       console.error('Login error:', error)
