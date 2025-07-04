@@ -12,8 +12,8 @@ export default function MainDiv(){
         <div>
             <Routes>
                 {/* Rutas públicas */}
-                <Route path="/" element={<Landing/>} />
-                <Route path="/login" element={<Login/>} />
+                <Route path="/" element={ <Landing/> } />
+                <Route path="/login" element={ <Login/> } />
                 <Route path="*" element={<ErrorPage />} />
 
                 {/* Rutas para usuarios autenticados - USER o ADMIN */}

@@ -2,49 +2,40 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Card, CardContent } from "../ui/card"
 import { Badge } from "../ui/badge"
-import {
-  Leaf,
-  TreePine,
-  Droplets,
-  Sun,
-  Recycle,
-  Wind,
-  Users,
-  Target,
-  TrendingUp,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react"
+import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp, Mail, Phone, MapPin} from "lucide-react"
+
+import { UnauthenticatedOnly } from '../auth/ConditionalRender'
 
 export default function Landing() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Header */}
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-green-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <a href="/" className="flex items-center justify-center">
-          <Leaf className="h-8 w-8 text-green-600" />
-          <span className="ml-2 text-xl font-bold text-green-800">EcoVision</span>
-        </a>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <a href="#about" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-            Sobre Nosotros
+      <UnauthenticatedOnly>
+        <header className="px-4 lg:px-6 h-16 flex items-center border-b border-green-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+          <a href="/" className="flex items-center justify-center">
+            <Leaf className="h-8 w-8 text-green-600" />
+            <span className="ml-2 text-xl font-bold text-green-800">EcoVision</span>
           </a>
-          <a href="#solutions" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-            Soluciones
-          </a>
-          <a href="#impact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-            Impacto
-          </a>
-          <a href="#contact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-            Contacto
-          </a>
-          <a href="/login" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-            Iniciar Sesion
-          </a>
-        </nav>
-      </header>
-
+          <nav className="ml-auto flex gap-4 sm:gap-6">
+            <a href="#about" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              Sobre Nosotros
+            </a>
+            <a href="#solutions" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              Soluciones
+            </a>
+            <a href="#impact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              Impacto
+            </a>
+            <a href="#contact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              Contacto
+            </a>
+            <a href="/login" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              Iniciar Sesion
+            </a>
+          </nav>
+        </header>
+      </UnauthenticatedOnly>
+      
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">

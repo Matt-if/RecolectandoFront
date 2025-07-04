@@ -17,9 +17,13 @@ export default function HeaderForAuthUsers() {
             
             <RoleBasedAccess requiredRoles={['ADMIN']}>
             <a href="/register" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-                Registrar un nuevo usuario
+                Registrar nuevo usuario
             </a>
             </RoleBasedAccess>
+
+            <a href="/userProfile" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Mis datos
+            </a>
 
             <a href="/recolectionForm" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
                 Subir una Recoleccion
