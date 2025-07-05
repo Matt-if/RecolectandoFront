@@ -12,7 +12,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   
-  const { setToken, setId, setRol } = useContext(context) //estos son los setters que se usan para guardar valores en las variables del contexto
+  const { setAccessToken, setRefreshToken, setId, setRol } = useContext(context) //estos son los setters que se usan para guardar valores en las variables del contexto
   const ctx = useContext(context); //con esto se puede acceder al contexto y ver lo que este guardado
   const navigate = useNavigate()
 
@@ -32,13 +32,19 @@ export default function Login() {
 
       const data = await response.json()
 
-      if (response.ok && data.token) {
-        // Save token to context and localStorage
-        const decoded = jwtDecode(data.token);
-        setToken(data.token)
+      if (response.ok && data.accessToken && data.refreshToken) {
+        // Decodificar el accessToken para obtener info del usuario
+        const decoded = jwtDecode(data.accessToken);
+        
+        // Guardar tokens en contexto y almacenamiento
+        setAccessToken(data.accessToken)
+        setRefreshToken(data.refreshToken)
         setId(decoded.id || "")
         setRol(decoded.rol || "")
-        localStorage.setItem('authToken', data.token)
+        
+        // Guardar en almacenamiento
+        sessionStorage.setItem('accessToken', data.accessToken)
+        localStorage.setItem('refreshToken', data.refreshToken)
         localStorage.setItem('userId', decoded.id || "")
         localStorage.setItem('userRol', decoded.rol || "")      
 

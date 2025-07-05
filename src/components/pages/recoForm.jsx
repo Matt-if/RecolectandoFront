@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { context } from "../context"
+import { useAuth } from "../../hooks/useAuth"
 import {
   Leaf,
   Scale,
@@ -17,7 +18,8 @@ import {
 
 export default function RecoForm() {
   const navigate = useNavigate()
-  const { token, id } = useContext(context) // Get token and user ID from context
+  const { id } = useContext(context) // Get user ID from context
+  const { authenticatedFetch } = useAuth() // Use authenticatedFetch for API calls
 
   // Form state
   const [formData, setFormData] = useState({
@@ -65,7 +67,7 @@ export default function RecoForm() {
 
   const fetchTiposResiduos = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL + "/retrievals/types")
+      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/retrievals/types")
       if (response.ok) {
         const result = await response.json()
         setTiposResiduos(result.data) // Access the data array from the response
@@ -80,7 +82,7 @@ export default function RecoForm() {
 
   const fetchEdificios = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL + `/buildings/summary`)
+      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + `/buildings/summary`)
       if (response.ok) {
         const result = await response.json()
         setEdificios(result.data)
@@ -94,7 +96,7 @@ export default function RecoForm() {
 
   const fetchSectores = async (edificioId) => {
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL + `/buildings/${edificioId}/sector/summary`)
+      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + `/buildings/${edificioId}/sector/summary`)
       if (response.ok) {
         const result = await response.json()
         setSectores(result.data)
@@ -173,11 +175,10 @@ export default function RecoForm() {
       console.log("User ID from context:", id)
       console.log("Submitting retrieval: ", payload)
 
-      const response = await fetch(import.meta.env.VITE_API_URL + "/retrievals", {
+      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/retrievals", {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` // Include auth token
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       })
