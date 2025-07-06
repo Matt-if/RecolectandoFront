@@ -12,8 +12,8 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   
-  const { setAccessToken, setRefreshToken, setId, setRol } = useContext(context) //estos son los setters que se usan para guardar valores en las variables del contexto
-  const ctx = useContext(context); //con esto se puede acceder al contexto y ver lo que este guardado
+  const { setAccessToken, setRefreshToken, setId, setRol } = useContext(context) //setters para guardar valores en las variables del contexto
+  const ctx = useContext(context); //para acceder al contexto y ver lo que este guardado
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -40,13 +40,14 @@ export default function Login() {
         setAccessToken(data.accessToken)
         setRefreshToken(data.refreshToken)
         setId(decoded.id || "")
-        setRol(decoded.rol || "")
+        setRol(decoded.role || "")
         
         // Guardar en almacenamiento
         sessionStorage.setItem('accessToken', data.accessToken)
         localStorage.setItem('refreshToken', data.refreshToken)
         localStorage.setItem('userId', decoded.id || "")
-        localStorage.setItem('userRol', decoded.rol || "")      
+        localStorage.setItem('userRol', decoded.role || "")
+        //console.log("Login exitoso, rol: ", decoded.role, " id: ", decoded.id)
 
         //A sweet alert can be added here if needed, with 2sec delay
         navigate("/userProfile")

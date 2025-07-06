@@ -92,12 +92,20 @@ export const useAuth = () => {
   const authenticatedFetch = useCallback(async (url, options = {}) => {
     let token = accessToken
 
-    // Si el token está próximo a expirar o ya expiró, intentar refrescarlo
-    if (isTokenExpiringSoon() || !token) {
+    // Solo refrescar si realmente es necesario y no hay refresh en progreso
+    if (!token && !isRefreshing) {
+      console.log('No hay accessToken, intentando obtener uno nuevo...');
       token = await refreshAccessToken()
       if (!token) {
         throw new Error('No se pudo obtener un token válido')
       }
+    }
+
+    // Si ya hay un refresh en progreso, esperar un poco
+    if (isRefreshing) {
+      console.log('Refresh en progreso, esperando...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      token = accessToken; // Usar el token actualizado
     }
 
     // Realizar la petición con el token
@@ -110,8 +118,9 @@ export const useAuth = () => {
       }
     })
 
-    // Si recibimos 401, intentar refrescar el token una vez más
+    // Si recibimos 401 y NO hay refresh en progreso, intentar refrescar una vez
     if (response.status === 401 && !isRefreshing) {
+      console.log('Recibido 401, intentando refrescar token...');
       const newToken = await refreshAccessToken()
       if (newToken) {
         // Reintentar la petición con el nuevo token
@@ -127,7 +136,7 @@ export const useAuth = () => {
     }
 
     return response
-  }, [accessToken, refreshAccessToken, isTokenExpiringSoon, isRefreshing])
+  }, [accessToken, refreshAccessToken, isRefreshing])
 
   return {
     accessToken,

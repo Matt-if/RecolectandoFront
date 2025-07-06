@@ -11,12 +11,21 @@ const CustomProvider = (props) => {
     const [accessToken, setAccessToken] = useState(() => sessionStorage.getItem("accessToken") || null);
     const [refreshToken, setRefreshToken] = useState(() => localStorage.getItem("refreshToken") || null);
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const [lastRefreshTime, setLastRefreshTime] = useState(0); // Para evitar múltiples refreshes
 
     // Función para refrescar el access token
     const refreshAccessToken = useCallback(async () => {
-        if (isRefreshing || !refreshToken) return null;
+        const now = Date.now();
+        
+        // Evitar múltiples refresh en un período corto (30 segundos)
+        if (isRefreshing || !refreshToken || (now - lastRefreshTime) < 30000) {
+            console.log('Refresh ya en progreso, sin refreshToken, o muy reciente');
+            return null;
+        }
         
         setIsRefreshing(true);
+        setLastRefreshTime(now);
+        
         try {
             const response = await fetch(import.meta.env.VITE_REFRESH_URL, {
                 method: 'POST',
@@ -29,7 +38,7 @@ const CustomProvider = (props) => {
             if (response.ok) {
                 const data = await response.json();
                 const newAccessToken = data.accessToken;
-                const newRefreshToken = data.refreshToken; // Si la API rota también el refresh token
+                const newRefreshToken = data.refreshToken; // Si la API rota también el refresh token, lo cual es asi!
                 
                 setAccessToken(newAccessToken);
                 sessionStorage.setItem('accessToken', newAccessToken);
@@ -38,12 +47,13 @@ const CustomProvider = (props) => {
                     setRefreshToken(newRefreshToken);
                     localStorage.setItem('refreshToken', newRefreshToken);
                 }
-                
+
                 console.log('Token refreshed successfully');
                 return newAccessToken;
             } else {
+                const data = await response.json()
                 // Refresh token inválido o expirado
-                console.log('Refresh token inválido, cerrando sesión...');
+                console.log("Refresh token inválido, error: ", data.msg, "\n cerrando sesión...");
                 logout();
                 return null;
             }
@@ -54,7 +64,7 @@ const CustomProvider = (props) => {
         } finally {
             setIsRefreshing(false);
         }
-    }, [refreshToken, isRefreshing]);
+    }, [refreshToken, lastRefreshTime]); // Añadimos lastRefreshTime
 
     // Función para limpiar sesión
     const logout = useCallback(() => {
@@ -70,39 +80,47 @@ const CustomProvider = (props) => {
 
     // Verificar expiración del access token automáticamente
     useEffect(() => {
+        if (!accessToken) return;
+
         const checkTokenExpiration = async () => {
-            if (accessToken) {
-                try {
-                    const decoded = jwtDecode(accessToken);
-                    const currentTime = Date.now() / 1000;
-                    const timeUntilExpiry = decoded.exp - currentTime;
-                    
-                    // Si el token expira en menos de 5 minutos, intentar refrescarlo
-                    if (timeUntilExpiry < 300) { // 5 minutos
-                        console.log('Access token próximo a expirar, refrescando...');
-                        await refreshAccessToken();
-                    }
-                    // Si ya expiró, intentar refrescarlo inmediatamente
-                    else if (timeUntilExpiry < 0) {
-                        console.log('Access token expirado, refrescando...');
-                        await refreshAccessToken();
-                    }
-                } catch (error) {
-                    console.error('Error verificando access token:', error);
-                    // Si hay error decodificando, intentar refrescar
+            // Evitar múltiples ejecuciones simultáneas
+            if (isRefreshing) {
+                console.log('Ya hay un refresh en progreso, saltando verificación...');
+                return;
+            }
+
+            console.log('Verificando expiración del access token...');
+            try {
+                const decoded = jwtDecode(accessToken);
+                const currentTime = Date.now() / 1000;
+                const timeUntilExpiry = decoded.exp - currentTime;
+                console.log('Tiempo restante para expiración del access token:', Math.round(timeUntilExpiry / 60), ' minutos');
+                
+                // Si el token expira en menos de 5 minutos (300 segundos), intentar refrescarlo
+                if (timeUntilExpiry < 300 && timeUntilExpiry > 0) {
+                    console.log('Access token próximo a expirar, refrescando...');
                     await refreshAccessToken();
                 }
+                // Si ya expiró, intentar refrescarlo inmediatamente
+                else if (timeUntilExpiry <= 0) {
+                    console.log('Access token expirado, refrescando...');
+                    await refreshAccessToken();
+                }
+            } catch (error) {
+                console.error('Error verificando access token:', error);
+                // Si hay error decodificando, intentar refrescar
+                await refreshAccessToken();
             }
         };
 
         // Verificar inmediatamente
         checkTokenExpiration();
         
-        // Verificar cada 2 minutos (más frecuente para access tokens de corta duración)
-        const interval = setInterval(checkTokenExpiration, 120000);
+        // Verificar cada 5 minutos (menos agresivo)
+        const interval = setInterval(checkTokenExpiration, 300000);
         
         return () => clearInterval(interval);
-    }, [accessToken, refreshAccessToken]);
+    }, [accessToken, refreshAccessToken, isRefreshing]);
 
     const ctx = {
         rol,
@@ -115,7 +133,8 @@ const CustomProvider = (props) => {
         setRefreshToken,
         refreshAccessToken,
         logout,
-        isRefreshing
+        isRefreshing,
+        lastRefreshTime
     };
 
     return (
