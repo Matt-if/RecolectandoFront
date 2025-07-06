@@ -89,20 +89,15 @@ const CustomProvider = (props) => {
                 return;
             }
 
-            console.log('Verificando expiración del access token...');
+            console.log('Verificando expiración del access token... (ejecutado a las:', new Date().toLocaleTimeString(), ')');
             try {
                 const decoded = jwtDecode(accessToken);
                 const currentTime = Date.now() / 1000;
                 const timeUntilExpiry = decoded.exp - currentTime;
                 console.log('Tiempo restante para expiración del access token:', Math.round(timeUntilExpiry / 60), ' minutos');
                 
-                // Si el token expira en menos de 5 minutos (300 segundos), intentar refrescarlo
-                if (timeUntilExpiry < 300 && timeUntilExpiry > 0) {
-                    console.log('Access token próximo a expirar, refrescando...');
-                    await refreshAccessToken();
-                }
                 // Si ya expiró, intentar refrescarlo inmediatamente
-                else if (timeUntilExpiry <= 0) {
+                if (timeUntilExpiry <= 0) {
                     console.log('Access token expirado, refrescando...');
                     await refreshAccessToken();
                 }
@@ -116,11 +111,18 @@ const CustomProvider = (props) => {
         // Verificar inmediatamente
         checkTokenExpiration();
         
-        // Verificar cada 5 minutos (menos agresivo)
-        const interval = setInterval(checkTokenExpiration, 300000);
+        // Verificar cada 5 minutos (300000 ms)
+        console.log('Configurando intervalo de verificación cada 5 minutos...');
+        const interval = setInterval(() => {
+            console.log('Intervalo ejecutándose - ', new Date().toLocaleTimeString());
+            checkTokenExpiration();
+        }, 300000);
         
-        return () => clearInterval(interval);
-    }, [accessToken, refreshAccessToken, isRefreshing]);
+        return () => {
+            console.log('Limpiando intervalo de verificación...');
+            clearInterval(interval);
+        };
+    }, [accessToken]); // ← SOLO accessToken como dependencia
 
     const ctx = {
         rol,
