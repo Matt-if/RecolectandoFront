@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/useAuth"
 import { Leaf, Mail, Lock, Eye, EyeOff, User, UserPlus, Save, ArrowLeft, AlertCircle, CheckCircle } from "lucide-react"
 
 export default function Register() {
   const navigate = useNavigate()
+  const { authenticatedFetch } = useAuth()
 
   // Form state
   const [formData, setFormData] = useState({
@@ -86,22 +88,18 @@ export default function Register() {
     try {
       // Here you would submit to your backend
       const userData = {
-        email: formData.email,
+        username: formData.email,
         password: formData.password,
         firstName: formData.firstName || null,
         lastName: formData.lastName || null,
       }
 
-      console.log("Registering user:", userData)
-
-      const response = await fetch("http://localhost:8080/api/v1/auth/register", {
-        method: "POST",
+      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/auth/register", {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          // Add authorization header if needed
-          "Authorization": `Bearer ${token}`
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(userData)
       })
 
       if (response.ok) {
@@ -114,7 +112,7 @@ export default function Register() {
           firstName: "",
           lastName: "",
         })
-        // Show success message for 2 seconds then redirect or allow new registration
+        alert("Usuario registrado correctamente")
         setTimeout(() => {
           setSuccess(false)
         }, 3000)

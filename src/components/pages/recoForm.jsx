@@ -187,7 +187,7 @@ export default function RecoForm() {
 
       if (response.ok) {
         // Success - show success message and redirect
-        alert("Medición guardada exitosamente")
+        alert("Recoleccion guardada exitosamente")
         navigate("/") // or wherever you want to redirect
       } else {
         // Handle API error
