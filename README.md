@@ -1,12 +1,30 @@
-# React + Vite
+https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Title
+A short description of your project goes here.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+1. Clone the repository:
+```bash
+ git clone https://github.com/yourusername/yourproject.git
+```
 
-## Expanding the ESLint configuration
+2. Install dependencies:
+```bashk
+ npm install
+ ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Usage
+Describe how to use your project, including code examples or screenshots. For example:
+To run the project, use the following command:
+```bash
+npm run dev
+```
+
+## License
+This project is licensed under the [MIT License](LICENSE).
