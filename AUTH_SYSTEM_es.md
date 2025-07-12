@@ -40,7 +40,7 @@ Este proyecto implementa un sistema de autenticación robusto usando JWT (access
 4. Usuario se redirige a área protegida
 
 ### Renovación Automática
-1. Sistema verifica expiración cada 2 minutos
+1. Sistema verifica expiración cada `Token expiration` - 2 minutos
 2. Si accessToken expira pronto (< 5 min), se renueva automáticamente
 3. Si refreshToken es inválido, se limpia la sesión
 
@@ -75,7 +75,7 @@ src/
 
 ## Variables de Entorno
 
-```env
+``` env
 VITE_API_URL="http://localhost:8080/api/v1"
 VITE_LOGIN_URL="http://localhost:8080/api/v1/auth/login"
 VITE_REFRESH_URL="http://localhost:8080/api/v1/auth/refresh"
@@ -142,6 +142,6 @@ Para adaptar el sistema a tu API:
 ## Notas Importantes
 
 - El sistema asume que la API devuelve `accessToken` y `refreshToken`
-- Los tokens deben ser JWT válidos con `exp` (expiration time)
+- Los tokens deben ser JWT válidos con claim `exp` (expiration time)
 - La renovación se hace automáticamente en peticiones API
 - El sistema limpia automáticamente tokens expirados
