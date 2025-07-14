@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge"
 import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp, Mail, Phone, MapPin} from "lucide-react"
 
 import { UnauthenticatedOnly } from '../auth/ConditionalRender'
+import WeightWasteTypeBySector from '../charts/weight-wasteType-by-sector'
 
 export default function Landing() {
   return (
@@ -73,15 +74,32 @@ export default function Landing() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-3xl opacity-20"></div>
-                  <img
-                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop&crop=center"
-                    width="400"
-                    height="400"
-                    alt="Sustainable Earth"
-                    className="relative rounded-full border-4 border-green-200 object-cover"
-                  />
+                <div className="flex items-center gap-6">
+                  {/* Imagen principal 
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-3xl opacity-20"></div>
+                    <img
+                      src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=300&fit=crop&crop=center"
+                      width="300"
+                      height="300"
+                      alt="Sustainable Earth"
+                      className="relative rounded-full border-4 border-green-200 object-cover"
+                    />
+                  </div>
+                  */}
+                  
+                  {/* Chart al lado */}
+                  <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-green-100">
+                    {/* 
+                    <div className="text-sm font-medium text-green-700 mb-3 text-center">
+                      Residuos Compostables recolectados por Sector
+                    </div>
+                    */}
+                    <WeightWasteTypeBySector 
+                      type="COMPOSTABLE" 
+                      className="w-[500px] h-[300px]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
