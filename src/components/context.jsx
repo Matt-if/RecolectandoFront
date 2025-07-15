@@ -15,7 +15,29 @@ const CustomProvider = (props) => {
     const intervalRef = useRef(null);
 
     // Función para limpiar sesión
-    const logout = useCallback(() => {
+    const logout = useCallback(async () => { // ← Agregar async
+        // Hacer logout en el backend ANTES de limpiar el storage local
+        console.log('🔒 Usuario desautenticado, haciendo POST a /logout');
+        
+        try {
+            const response = await fetch(import.meta.env.VITE_LOGOUT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${refreshToken}`
+                }
+            });
+            
+            if (response.ok) {
+                console.log('✅ Logout exitoso');
+            } else {
+                console.error('❌ Error al hacer logout:', response.status);
+            }
+        } catch (error) {
+            console.error('❌ Error en request de logout:', error);
+        }
+
+        // Limpiar storage DESPUÉS de hacer el request
         setAccessToken(null);
         setRefreshToken(null);
         setId(null);
@@ -31,7 +53,10 @@ const CustomProvider = (props) => {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
         }
-    }, []);
+        
+        // Forzar navegación a la página principal
+        window.location.href = '/'; // ← Esto fuerza un reload completo
+    }, [refreshToken]);
 
     // Función para refrescar el access token
     const refreshAccessToken = useCallback(async () => {

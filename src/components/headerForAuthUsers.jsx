@@ -29,7 +29,7 @@ export default function HeaderForAuthUsers() {
                 Subir una Recoleccion
             </a>
 
-            <a href="/" onClick={logout} className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            <a onClick={logout} className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors cursor-pointer">
                 Cerrar Sesion
             </a>
         </nav>
