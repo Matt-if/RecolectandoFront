@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Card, CardContent } from "../ui/card"
@@ -6,8 +7,18 @@ import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp
 
 import { UnauthenticatedOnly } from '../auth/ConditionalRender'
 import WeightWasteTypeBySector from '../charts/weight-wasteType-by-sector'
+import ChartFilter from '../ui/chartFilter'
 
 export default function Landing() {
+  const [chartFilters, setChartFilters] = useState({
+    type: 'COMPOSTABLE',
+    year: 2025,
+    month: null
+  });
+
+  const handleFilterChange = (newFilters) => {
+    setChartFilters(newFilters);
+  };
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Header */}
@@ -78,8 +89,14 @@ export default function Landing() {
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-[900px]">
                   <div className="bg-white p-8 rounded-xl shadow-lg border-2 border-green-100 w-full">
+                    <ChartFilter 
+                      onFilterChange={handleFilterChange}
+                      initialFilters={chartFilters}
+                    />
                     <WeightWasteTypeBySector 
-                      type="COMPOSTABLE" 
+                      type={chartFilters.type}
+                      year={chartFilters.year}
+                      month={chartFilters.month}
                       className="w-full h-[400px] lg:h-[450px] xl:h-[500px]"
                     />
                   </div>

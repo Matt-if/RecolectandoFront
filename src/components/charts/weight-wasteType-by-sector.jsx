@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
-const fetchRows = async (type) => {
+const fetchRows = async (type, year = null, month = null) => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_ANALYTICS_URL}/weight-wasteType-by-sector/${type}`, {
+        // Construir URL con parámetros de filtro
+        const params = new URLSearchParams();
+        params.append('type', type);
+        if (year) params.append('year', year);
+        if (month) params.append('month', month);
+
+        const response = await fetch(`${import.meta.env.VITE_ANALYTICS_URL}/weight-wasteType-by-sector?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +35,7 @@ const fetchRows = async (type) => {
     }
 };
 
-export default function WeightWasteTypeBySector({ type = 'COMPOSTABLE', className = '' }) {
+export default function WeightWasteTypeBySector({ type = 'COMPOSTABLE', year = 2025, month = null, className = '' }) {
     const canvasRef = useRef(null);
     const chartRef = useRef(null);
     const [loading, setLoading] = useState(true);
@@ -46,15 +52,15 @@ export default function WeightWasteTypeBySector({ type = 'COMPOSTABLE', classNam
                 return;
             }
 
-            console.log('Fetching data for type:', type);
+            console.log('Fetching data for:', { type, year, month });
             fetchingRef.current = true;
             setLoading(true);
             
             try {
-                const rows = await fetchRows(type);
+                const rows = await fetchRows(type, year, month);
                 
                 if (!rows || rows.length === 0) {
-                    setError('No data available');
+                    setError('No hay datos disponibles para los filtros seleccionados');
                     setData(null);
                 } 
                 else {
@@ -76,7 +82,7 @@ export default function WeightWasteTypeBySector({ type = 'COMPOSTABLE', classNam
 
         return () => { fetchingRef.current = false; }; // Cleanup flag function
 
-    }, [type]); // Solo cuando cambia el tipo
+    }, [type, year, month]); // Ahora depende de los tres parámetros
 
     // Efecto separado para crear el chart cuando hay datos
     useEffect(() => {
