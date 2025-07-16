@@ -52,7 +52,7 @@ export default function Landing() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
+        <section className="w-full py-6 md:py-12 lg:py-16 xl:py-24 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-20 xl:grid-cols-[1fr_800px] xl:gap-24 2xl:grid-cols-[1fr_900px] 2xl:gap-28">
               <div className="flex flex-col justify-center space-y-6">
@@ -88,7 +88,7 @@ export default function Landing() {
               </div>
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-[900px]">
-                  <div className="bg-white p-8 rounded-xl shadow-lg border-2 border-green-100 w-full">
+                  <div className="bg-white p-5 rounded-xl shadow-lg border-2 border-green-100 w-full">
                     <ChartFilter 
                       onFilterChange={handleFilterChange}
                       initialFilters={chartFilters}
