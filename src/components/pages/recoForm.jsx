@@ -67,7 +67,7 @@ export default function RecoForm() {
 
   const fetchTiposResiduos = async () => {
     try {
-      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/retrievals/types")
+      const response = await authenticatedFetch(import.meta.env.VITE_RETRIEVAL_TYPES_URL)
       if (response.ok) {
         const result = await response.json()
         setTiposResiduos(result.data) // Access the data array from the response
@@ -82,7 +82,7 @@ export default function RecoForm() {
 
   const fetchEdificios = async () => {
     try {
-      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + `/buildings/summary`)
+      const response = await authenticatedFetch(import.meta.env.VITE_BUILDINGS_URL)
       if (response.ok) {
         const result = await response.json()
         setEdificios(result.data)
@@ -96,7 +96,7 @@ export default function RecoForm() {
 
   const fetchSectores = async (edificioId) => {
     try {
-      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + `/buildings/${edificioId}/sector/summary`)
+      const response = await authenticatedFetch(import.meta.env.VITE_SECTORS_FROM_BUILDING_BY_ID_URL+ `/${edificioId}`)
       if (response.ok) {
         const result = await response.json()
         setSectores(result.data)
