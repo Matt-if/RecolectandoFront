@@ -12,8 +12,8 @@ export default function Register() {
     email: "",
     password: "",
     confirmPassword: "",
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
   })
 
   // UI state
@@ -90,8 +90,8 @@ export default function Register() {
       const userData = {
         username: formData.email,
         password: formData.password,
-        firstName: formData.firstName || null,
-        lastName: formData.lastName || null,
+        firstname: formData.firstname || null,
+        lastname: formData.lastname || null,
       }
 
       const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/auth/register", {
@@ -109,8 +109,8 @@ export default function Register() {
           email: "",
           password: "",
           confirmPassword: "",
-          firstName: "",
-          lastName: "",
+          firstname: "",
+          lastname: "",
         })
         alert("Usuario registrado correctamente")
         setTimeout(() => {
@@ -132,8 +132,8 @@ export default function Register() {
       email: "",
       password: "",
       confirmPassword: "",
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
     })
     setErrors({})
     setApiError("")
@@ -262,30 +262,30 @@ export default function Register() {
             {/* Name Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="firstName" className="text-sm font-medium text-green-800 flex items-center gap-2">
+                <label htmlFor="firstname" className="text-sm font-medium text-green-800 flex items-center gap-2">
                   <User className="h-4 w-4" />
                   Nombre
                 </label>
                 <input
-                  id="firstName"
+                  id="firstname"
                   type="text"
-                  value={formData.firstName}
-                  onChange={(e) => handleInputChange("firstName", e.target.value)}
+                  value={formData.firstname}
+                  onChange={(e) => handleInputChange("firstname", e.target.value)}
                   className="w-full px-4 py-3 border border-green-200 rounded-lg bg-green-50/50 text-green-900 placeholder-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all"
                   placeholder="Nombre (opcional)"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="lastName" className="text-sm font-medium text-green-800 flex items-center gap-2">
+                <label htmlFor="lastname" className="text-sm font-medium text-green-800 flex items-center gap-2">
                   <User className="h-4 w-4" />
                   Apellido
                 </label>
                 <input
-                  id="lastName"
+                  id="lastname"
                   type="text"
-                  value={formData.lastName}
-                  onChange={(e) => handleInputChange("lastName", e.target.value)}
+                  value={formData.lastname}
+                  onChange={(e) => handleInputChange("lastname", e.target.value)}
                   className="w-full px-4 py-3 border border-green-200 rounded-lg bg-green-50/50 text-green-900 placeholder-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none transition-all"
                   placeholder="Apellido (opcional)"
                 />
