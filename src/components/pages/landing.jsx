@@ -281,32 +281,293 @@ export default function Landing() {
 
         {/* Novedades */}
         <section id="novedades" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-green-100">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1400px]">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-900">
-                  Ultimas novedades!
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
+                  Últimas Novedades
                 </h2>
-                <p className="max-w-[700px] text-green-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of eco-warriors who are already making a positive impact on our planet.
+                <p className="max-w-[1000px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
+                  Mantente al día con las últimas actividades, logros y proyectos del Programa de Gestión Ambiental
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex gap-2">
+            </div>
+
+            {/* Grid de novedades */}
+            <div className="mx-auto grid max-w-[1500px] items-start gap-8 py-12 lg:grid-cols-3 lg:gap-12 xl:gap-16">
+              {/* Novedad 1 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <Badge className="bg-green-100 text-green-800 hover:bg-green-200">
+                      Nuevo Proyecto
+                    </Badge>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900 mb-3">
+                    Composteras Comunitarias en la FCNyM
+                  </h3>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Inauguramos nuevas composteras comunitarias que permitirán procesar hasta 200kg de residuos orgánicos semanales. 
+                    Un gran paso hacia la sustentabilidad en nuestra facultad.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-green-100">
+                    <div className="flex items-center gap-2 text-sm text-green-600">
+                      <TreePine className="h-4 w-4" />
+                      <span>15 de Julio, 2025</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Novedad 2 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">
+                      Logro Destacado
+                    </Badge>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900 mb-3">
+                    1 Tonelada de Residuos Reciclados
+                  </h3>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    ¡Celebramos haber alcanzado la marca de 1 tonelada de residuos reciclados este año! 
+                    Gracias a la participación activa de toda la comunidad universitaria.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-green-100">
+                    <div className="flex items-center gap-2 text-sm text-green-600">
+                      <Recycle className="h-4 w-4" />
+                      <span>10 de Julio, 2025</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Novedad 3 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-200">
+                      Próximo Evento
+                    </Badge>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-900 mb-3">
+                    Taller de Lombricompostaje
+                  </h3>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Únete a nuestro próximo taller donde aprenderás todo sobre lombricompostaje. 
+                    ¡Inscripciones abiertas para estudiantes y personal de la facultad!
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-green-100">
+                    <div className="flex items-center gap-2 text-sm text-green-600">
+                      <Users className="h-4 w-4" />
+                      <span>5 de Agosto, 2025</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Newsletter Subscription */}
+            <div className="flex flex-col items-center justify-center space-y-6 text-center mt-12">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-green-900">
+                  ¿Querés estar al día con nuestras actividades?
+                </h3>
+                <p className="max-w-[600px] text-green-700 text-lg leading-relaxed">
+                  Suscribite a nuestro boletín y recibí las últimas novedades del PGA directamente en tu correo.
+                </p>
+              </div>
+              <div className="w-full max-w-md space-y-4">
+                <form className="flex gap-3">
                   <Input
                     type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 border-green-300 focus:border-green-500"
+                    placeholder="Ingresá tu email"
+                    className="flex-1 border-green-300 focus:border-green-500 bg-white"
                   />
-                  <Button type="submit" className="bg-green-600 hover:bg-green-700">
-                    Join Now
+                  <Button type="submit" className="bg-green-600 hover:bg-green-700 px-6">
+                    Suscribirse
                   </Button>
                 </form>
-                <p className="text-xs text-green-600">Get weekly eco-tips and updates. No spam, unsubscribe anytime.</p>
+                <p className="text-sm text-green-600">
+                  Recibirás actualizaciones mensuales. Sin spam, podés cancelar cuando quieras.
+                </p>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Conocer más */}
+        <section id="conocer-mas" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
+                  Conocé más sobre nuestro trabajo
+                </h2>
+                <p className="max-w-[1000px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
+                  Descubrí cómo gestionamos los residuos de manera integral en la FCNyM
+                </p>
+              </div>
+            </div>
+
+            {/* Introducción */}
+            <div className="mx-auto max-w-[1400px] py-12 space-y-8">
+              <div className="space-y-6">
+                <p className="text-green-700 text-lg md:text-xl leading-relaxed text-center">
+                  El crecimiento demográfico y económico ha incrementado la generación de residuos, intensificando el deterioro ambiental.
+                  Esto nos obliga a repensar nuestras estrategias de producción y consumo para cuidar el medio ambiente y la salud.
+                </p>
+                
+                <p className="text-green-700 text-base md:text-lg leading-relaxed">
+                  El Programa de Gestión Integral de Residuos se encarga de gestionar los Residuos Sólidos Urbanos (RSU) de la institución 
+                  a través de la separación en origen. Para ello, se aplican técnicas de clasificación selectiva en tres categorías 
+                  diferenciadas por color (orgánicos de origen vegetal, inorgánicos reciclables y no reciclables) con la finalidad de 
+                  diferenciar los residuos, asignarles distintos destinos y lograr disminuir el volumen enviado al relleno sanitario CEAMSE.
+                </p>
+                
+                <p className="text-green-700 text-base md:text-lg leading-relaxed">
+                  De esta manera, mientras la fracción orgánica es recolectada y compostada por los alumnos becarios del Programa para 
+                  su uso en el Vivero de la facultad, los materiales no orgánicos reciclables son separados y recolectados por la 
+                  Cooperativa Unión de Cartoneros Platenses para su tratamiento y reutilización, promoviendo de esta forma una activa 
+                  participación y vinculación con distintos actores sociales.
+                </p>
+                
+                <p className="text-green-700 text-base md:text-lg leading-relaxed">
+                  Además, como un complemento imprescindible y en forma paralela, se realizan una serie de actividades de concientización 
+                  y difusión como charlas, talleres y cursos, con el propósito de crear espacios educativos holísticos que promuevan un 
+                  cambio positivo en la conciencia de la comunidad.
+                </p>
+
+                <p className="text-green-700 text-base md:text-lg leading-relaxed">
+                  De esta forma, el Programa de Gestión Integral de Residuos de la FCNyM intenta abordar de manera sistémica e interdisciplinaria diversos aspectos vinculados 
+                  a la problemática en el ámbito de la facultad, promoviendo una conciencia crítica acerca de la situación de los RSU en la región, 
+                  que se traduzca en acciones concretas que apunten a cambios en nuestras conductas, 
+                  tanto en el ámbito académico, personal y social, buscando generar interés y compromiso por la gestión ambiental
+                </p>
+              </div>
+            </div>
+
+            {/* Etapas */}
+            <div className="mx-auto max-w-[1500px] py-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-green-900 text-center mb-12">
+                Etapas del Proceso
+              </h3>
+              
+              <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
+                {/* Etapa 1 */}
+                <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                  <CardContent className="p-6 flex flex-col h-full text-center">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Recycle className="h-8 w-8 text-green-600" />
+                      </div>
+                      <h4 className="text-xl font-bold text-green-900 mb-3">
+                        Separación en origen
+                      </h4>
+                    </div>
+                    <p className="text-green-700 text-base leading-relaxed flex-grow">
+                      Aplicación de las 3R para minimizar residuos y optimizar recursos.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* Etapa 2 */}
+                <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                  <CardContent className="p-6 flex flex-col h-full text-center">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Target className="h-8 w-8 text-emerald-600" />
+                      </div>
+                      <h4 className="text-xl font-bold text-green-900 mb-3">
+                        Tratamiento
+                      </h4>
+                    </div>
+                    <p className="text-green-700 text-base leading-relaxed flex-grow">
+                      Los residuos son tratados para su reutilización, reciclaje o eliminación.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* Etapa 3 */}
+                <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                  <CardContent className="p-6 flex flex-col h-full text-center">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <TreePine className="h-8 w-8 text-teal-600" />
+                      </div>
+                      <h4 className="text-xl font-bold text-green-900 mb-3">
+                        Destino final
+                      </h4>
+                    </div>
+                    <p className="text-green-700 text-base leading-relaxed flex-grow">
+                      Los residuos son depositados en rellenos sanitarios, incinerados o se reutilizan en 
+                      procesos industriales.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Beneficios */}
+            <div className="mx-auto max-w-[1500px] py-12 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100">
+              <h3 className="text-2xl md:text-3xl font-bold text-green-900 text-center mb-12">
+                Beneficios de nuestro programa
+              </h3>
+              
+              <div className="grid gap-8 md:grid-cols-3 lg:gap-12 px-6">
+                {/* Beneficio 1 */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto">
+                    <Wind className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-green-900">
+                    Reducción de gases de efecto invernadero
+                  </h4>
+                  <p className="text-green-700 text-base leading-relaxed">
+                    Disminución de la contaminación y las emisiones de gases nocivos para el ambiente.
+                  </p>
+                </div>
+
+                {/* Beneficio 2 */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                    <Sun className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-green-900">
+                    Mejora del suelo
+                  </h4>
+                  <p className="text-green-700 text-base leading-relaxed">
+                    El compostaje de residuos orgánicos de origen vegetal, produce abono que enriquece el suelo.
+                  </p>
+                </div>
+
+                {/* Beneficio 3 */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto">
+                    <Droplets className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-green-900">
+                    Conservación de recursos naturales
+                  </h4>
+                  <p className="text-green-700 text-base leading-relaxed">
+                    El reciclaje y la reutilización contribuyen a la conservación de los recursos naturales y a la Economía Circular.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Referencia */}
+            <div className="mx-auto max-w-[1200px] py-8 text-center">
+              <p className="text-sm text-green-600 italic">
+                Fuente: <a href="http://sedici.unlp.edu.ar/handle/10915/173385" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-700">
+                  http://sedici.unlp.edu.ar/handle/10915/173385
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer - Contacto */}
