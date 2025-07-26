@@ -61,35 +61,84 @@ export default function Landing() {
       </UnauthenticatedOnly>
       
       <main className="flex-1">
-        {/* Inicio (primer vistazo) */}
-        <section id="inicio" className="w-full py-6 md:py-12 lg:py-16 xl:py-24 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
-            <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-20 xl:grid-cols-[1fr_800px] xl:gap-24 2xl:grid-cols-[1fr_900px] 2xl:gap-28">
-              <div className="flex flex-col justify-center space-y-6">
-                <div className="space-y-4">
-                  <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-3xl 2xl:text-7xl/none text-green-900">
-                    PROGRAMA DE GESTIÓN AMBIENTAL FCNyM - UNLP
-                  </h1>
-                  <p className="max-w-[800px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
-                    “Mucha gente pequeña, en lugares pequeños, haciendo cosas pequeñas, pueden cambiar el mundo”. Eduardo Galeano
+        {/* Inicio */}
+        <section id="inicio" className="w-full py-2 md:py-6 lg:py-8 xl:py-3 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1820px]">
+            {/* Logo y Título */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-2 mb-2">
+              <div className="flex-shrink-0">
+                <Image 
+                  src={images.logos.logoRecortado} 
+                  alt="Logo PGA" 
+                  className="h-64 w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
+                />
+              </div>
+              <div className="text-center lg:text-left">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-green-900">
+                  PROGRAMA DE GESTIÓN AMBIENTAL
+                </h1>
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl lg:text-4xl xl:text-5xl text-green-700 mt-2">
+                  FCNyM - UNLP
+                </h2>
+              </div>
+            </div>
+
+            {/* Contenido inferior: Frase/Botón y Fotos */}
+            <div className="grid gap-4 lg:grid-cols-[2fr_4fr] lg:gap-6 xl:gap-5">
+              {/* Lado izquierdo: Frase y botón */}
+              <div className="flex flex-col justify-center space-y-2 max-w-lg">
+                <div className="space-y-1">
+                  <p className="text-green-700 md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium">
+                    "Mucha gente pequeña, en lugares pequeños, haciendo cosas pequeñas, pueden cambiar el mundo"
+                  </p>
+                  <p className="text-green-600 text-lg font-semibold">
+                    - Eduardo Galeano
                   </p>
                 </div>
-                <div className="flex flex-col gap-3 min-[400px]:flex-row">
-                  <Button href="#conocer-mas" size="lg" className="bg-green-600 hover:bg-green-700 cursor-pointer text-white text-lg px-8 py-4">
+
+                <div className="flex justify-right mt-28">
+                  <Button href="#conocer-mas" size="lg" className="bg-green-600 hover:bg-green-700 cursor-pointer text-white text-lg px-10 py-4 w-fit">
                     Conocer más
                   </Button>
                 </div>
-                <div className="flex items-center gap-6 text-base text-green-600">
-                  <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5" />
-                    <span>50K+ Members</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <TreePine className="h-5 w-5" />
-                    <span>1M+ Trees Planted</span>
-                  </div>
+              </div>
+              {/* Lado derecho: Fotos */}
+              <div className="flex flex-col gap-2 h-full">
+                <div className="grid grid-cols-3 gap-2 h-full min-h-[400px]">
+                  <Image 
+                    src={images.inicio.recoleccion2} 
+                    alt="Proceso de recolección" 
+                    className="rounded-lg shadow-lg h-full w-full object-cover aspect-[3/4]"
+                  />
+                  <Image 
+                    src={images.inicio.teamworkRamiro} 
+                    alt="Trabajo en equipo" 
+                    className="rounded-lg shadow-lg h-full w-full object-cover aspect-[3/4]"
+                  />
+                  <Image 
+                    src={images.inicio.manosLombrices} 
+                    alt="Trabajo con lombrices" 
+                    className="rounded-lg shadow-lg h-full w-full object-cover aspect-[3/4]"
+                  />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* impacto */}
+        <section id="impacto" className="w-full py-12 md:py-24 lg:py-18 bg-gradient-to-r from-green-600 to-emerald-600">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-white">¿SABIAS CUÁNTO DE NUESTROS RESIDUOS RECICLAMOS?</h2>
+                <p className="max-w-[1200px] text-green-100 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
+                  Averígualo con este gráfico interactivo!
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-[1500px] items-center gap-8 py-12 sm:grid-cols-2 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+              {/* div del grafico */}
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-[900px]">
                   <div className="bg-white p-5 rounded-xl shadow-lg border-2 border-green-100 w-full">
@@ -101,98 +150,10 @@ export default function Landing() {
                       type={chartFilters.type}
                       year={chartFilters.year}
                       month={chartFilters.month}
-                      className="w-full h-[400px] lg:h-[450px] xl:h-[500px]"
+                      className="w-full h-[400px] lg:h-[450px] xl:h-[450px]"
                     />
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Separacion de residuos */}
-        <section id="separacion-residuos" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <div className="space-y-4">
-                <Badge className="bg-emerald-100 text-emerald-800 w-fit">Our Solutions</Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
-                  Comprehensive Eco Solutions
-                </h2>
-                <p className="max-w-[1200px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
-                  From renewable energy to waste reduction, we provide integrated solutions for a sustainable lifestyle.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-[1500px] items-start gap-8 py-12 lg:grid-cols-3 lg:gap-12 xl:gap-16">
-              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
-                <CardContent className="flex flex-col items-center space-y-6 p-8">
-                  <div className="rounded-full bg-green-100 p-4">
-                    <Sun className="h-10 w-10 text-green-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-green-900">Renewable Energy</h3>
-                  <p className="text-center text-green-700 text-lg leading-relaxed">
-                    Harness the power of solar, wind, and other renewable sources to reduce your carbon footprint.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
-                <CardContent className="flex flex-col items-center space-y-6 p-8">
-                  <div className="rounded-full bg-emerald-100 p-4">
-                    <Recycle className="h-10 w-10 text-emerald-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-green-900">Waste Management</h3>
-                  <p className="text-center text-green-700 text-lg leading-relaxed">
-                    Smart recycling and composting solutions that turn waste into valuable resources.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
-                <CardContent className="flex flex-col items-center space-y-6 p-8">
-                  <div className="rounded-full bg-teal-100 p-4">
-                    <Droplets className="h-10 w-10 text-teal-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-green-900">Water Conservation</h3>
-                  <p className="text-center text-green-700 text-lg leading-relaxed">
-                    Advanced systems for water purification, collection, and efficient usage management.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* impacto */}
-        <section id="impacto" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-white">Our Environmental Impact</h2>
-                <p className="max-w-[1200px] text-green-100 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
-                  Together, we're making a measurable difference for our planet.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-[1500px] items-center gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16 xl:gap-20">
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <TreePine className="h-16 w-16 text-green-200" />
-                <div className="text-5xl xl:text-6xl font-bold text-white">1.2M</div>
-                <p className="text-green-100 text-lg">Trees Planted</p>
-              </div>
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <Wind className="h-16 w-16 text-green-200" />
-                <div className="text-5xl xl:text-6xl font-bold text-white">500K</div>
-                <p className="text-green-100 text-lg">Tons CO₂ Reduced</p>
-              </div>
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <Droplets className="h-16 w-16 text-green-200" />
-                <div className="text-5xl xl:text-6xl font-bold text-white">2.5M</div>
-                <p className="text-green-100 text-lg">Gallons Water Saved</p>
-              </div>
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <Users className="h-16 w-16 text-green-200" />
-                <div className="text-5xl xl:text-6xl font-bold text-white">50K+</div>
-                <p className="text-green-100 text-lg">Community Members</p>
               </div>
             </div>
           </div>
@@ -204,39 +165,116 @@ export default function Landing() {
             <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-20 xl:grid-cols-[1fr_700px] xl:gap-24">
               <div className="flex flex-col justify-center space-y-6">
                 <div className="space-y-4">
-                  <Badge className="bg-green-100 text-green-800 w-fit">About EcoVision</Badge>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
-                    Leading the Green Revolution
+                    ¿Quiénes somos?
                   </h2>
                   <p className="max-w-[800px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
-                    For over a decade, we've been at the forefront of environmental innovation, developing sustainable
-                    solutions that benefit both people and the planet.
+                    El PGA es un espacio, dentro de la Secretaría de Extensión de la FCNyM, de
+                    intercambio y debate que propone realizar actividades relacionadas a temáticas
+                    ambientales, con el fin de obtener las herramientas adecuadas para promover
+                    acciones sustentables dentro de la facultad, y que éstas puedan replicarse en
+                    nuestro cotidiano y ser transmitidas al resto de la comunidad, como medio para
+                    abordar las problemáticas ambientales en las que nos encontramos y generar un ambiente más sano.
+                  </p>
+                  <p className="text-green-700 text-lg">
+                    En 2008 se creó el “Plan de Reciclaje de la FCNyM”, para luego en el 2011 convertirse en el Programa de Gestión Integral de Residuos (PGIR).
+                    En el 2020 decidimos dar espacio a otras temáticas aparte de los residuos, y
+                    desarrollamos el “Programa de Gestión Ambiental” (PGA).
                   </p>
                 </div>
                 <ul className="grid gap-4 py-6">
                   <li className="flex items-center gap-3">
                     <Target className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">Carbon-neutral operations by 2025</span>
+                    <span className="text-green-700 text-lg">Programa de Gestión Ambiental (PGA)</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <TrendingUp className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">95% renewable energy usage</span>
+                    <span className="text-green-700 text-lg">En constante crecimiento</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Recycle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">Zero waste to landfill policy</span>
+                    <span className="text-green-700 text-lg">Reciclar es respetar el medio ambiente</span>
                   </li>
                 </ul>
               </div>
               <div className="flex items-center justify-center">
-                <img
-                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=700&h=700&fit=crop&crop=center"
-                  width="700"
-                  height="700"
-                  alt="Green Innovation"
-                  className="aspect-square overflow-hidden rounded-xl object-cover max-w-full h-auto shadow-lg"
-                />
+                <Image  src={images.nosotros.compostaje}/>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Separacion de residuos */}
+        <section id="separacion-residuos" className="w-full py-12 md:py-14 lg:py-20">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1700px]">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
+                  ¿Cómo separamos los residuos en la FCNyM?
+                </h2>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-[1500px] items-start gap-8 py-12 lg:grid-cols-3 lg:gap-12 xl:gap-16">
+              <Card className="border-green-200 bg-transparent hover:border-green-300 transition-colors h-full">
+                <CardContent className="flex flex-col h-full p-8">
+                  {/* Sección de texto - ocupa 60% del espacio */}
+                  <div className="flex-[3] flex flex-col justify-start space-y-6">
+                    <h3 className="text-2xl font-bold text-green-900">INORGÁNICOS RECICLABLES</h3>
+                    <p className="text-center text-green-700 text-lg leading-relaxed">
+                      Residuos que no tienen origen biológico y fueron generados mediante algún proceso.
+                      Vidrios, plástico y goma, metales, textiles, materiales inertes. 
+                      Se caracterizan por ser residuos que pueden ser recuperados para su reutilización o reciclado.
+                    </p>
+                  </div>
+                  {/* Sección de imagen - ocupa 40% del espacio */}
+                  <div className="flex-[2] flex items-center justify-center">
+                    <Image src={images.separacion_residuos.tacho_verde} 
+                    alt="Tacho verde"
+                    className="h-70 w-70 object-contain mix-blend-multiply"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
+                <CardContent className="flex flex-col h-full p-8">
+                  {/* Sección de texto - ocupa 60% del espacio */}
+                  <div className="flex-[3] flex flex-col justify-start space-y-6">
+                    <h3 className="text-2xl font-bold text-green-900">NO RECICLABLES</h3>
+                    <p className="text-center text-green-700 text-lg leading-relaxed">
+                      Materiales que no pueden reutilizarse por composición o contaminación.
+                      Papeles y cartones sucios, cigarrillos.
+                    </p>
+                  </div>
+                  {/* Sección de imagen - ocupa 40% del espacio */}
+                  <div className="flex-[2] flex items-center justify-center">
+                    <Image src={images.separacion_residuos.tacho_negro} 
+                    alt="Tacho negro"
+                    className="h-70 w-70 object-contain mix-blend-multiply"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
+                <CardContent className="flex flex-col h-full p-8">
+                  {/* Sección de texto - ocupa 60% del espacio */}
+                  <div className="flex-[3] flex flex-col justify-start space-y-6">
+                    <h3 className="text-2xl font-bold text-green-900">ORGÁNICOS DE ORIGEN VEGETAL COMPOSTABLES</h3>
+                    <p className="text-center text-green-700 text-lg leading-relaxed">
+                      Yerba, café, infusiones, cáscaras, carozos y restos de frutas/verduras, servilletas de papel, cáscaras de huevo (único material de origen animal!).
+                      Se caracterizan por ser fácilmente degradables por bacterias para producir compost.
+                    </p>
+                  </div>
+                  {/* Sección de imagen - ocupa 40% del espacio */}
+                  <div className="flex-[2] flex items-center justify-center">
+                    <Image src={images.separacion_residuos.tacho_verdosoAmarillo} 
+                    alt="Tacho verdoso amarillo"
+                    className="h-70 w-70 object-contain"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -247,7 +285,7 @@ export default function Landing() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-900">
-                  Ready to Make a Difference?
+                  Ultimas novedades!
                 </h2>
                 <p className="max-w-[700px] text-green-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Join thousands of eco-warriors who are already making a positive impact on our planet.
