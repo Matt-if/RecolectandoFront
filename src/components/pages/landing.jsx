@@ -4,10 +4,11 @@ import { Input } from "../ui/input"
 import { Card, CardContent } from "../ui/card"
 import { Badge } from "../ui/badge"
 import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp, Mail, Phone, MapPin} from "lucide-react"
-
 import { UnauthenticatedOnly } from '../auth/ConditionalRender'
 import WeightWasteTypeBySector from '../charts/weight-wasteType-by-sector'
 import ChartFilter from '../ui/chartFilter'
+import { images } from '../../assets/images'
+import Image from '../ui/image'
 
 export default function Landing() {
   const [chartFilters, setChartFilters] = useState({
@@ -26,53 +27,56 @@ export default function Landing() {
         <header className="px-4 lg:px-6 h-16 flex items-center border-b border-green-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto flex items-center justify-between max-w-[1920px] w-full">
             <a href="/" className="flex items-center justify-center">
-              <Leaf className="h-8 w-8 text-green-600" />
-              <span className="ml-2 text-xl font-bold text-green-800 hidden sm:inline" >EcoVision</span>
+              <Image src={images.logos.logoRecortado} alt="Logo" className="h-20 w-20 text-green-600" />
+              <span className="ml-2 text-xl font-bold text-green-800 hidden sm:inline" >PGA</span>
             </a>
-            <nav className="ml-auto flex gap-4 sm:gap-6">
-              <a href="#about" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-                Nosotros
-              </a>
-              <a href="#solutions" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-                Soluciones
-              </a>
-              <a href="#impact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+            <nav className="ml-auto flex items-center gap-6 sm:gap-6">
+              <a href="#impacto" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
                 Impacto
               </a>
-              <a href="#contact" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+              <a href="#nosotros" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Nosotros
+              </a>
+              <a href="#separacion-residuos" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Separación de Residuos
+              </a>
+              <a href="#novedades" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Novedades
+              </a>
+              <a href="#conocer-mas" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Conocer más
+              </a>
+              <a href="#preguntas-frecuentes" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
+                Preguntas Frecuentes
+              </a>
+              <a href="#contacto" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
                 Contacto
               </a>
-              <a href="/login" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
-                Iniciar Sesion
-              </a>
+              <Button  href="/login" size="default" variant="outline" className="bg-green-600 hover:bg-green-700 cursor-pointer text-white text-lg px-8 py-4">
+                Iniciar Sesión
+              </Button>
             </nav>
           </div>
         </header>
       </UnauthenticatedOnly>
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="w-full py-6 md:py-12 lg:py-16 xl:py-24 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
+        {/* Inicio (primer vistazo) */}
+        <section id="inicio" className="w-full py-6 md:py-12 lg:py-16 xl:py-24 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-20 xl:grid-cols-[1fr_800px] xl:gap-24 2xl:grid-cols-[1fr_900px] 2xl:gap-28">
               <div className="flex flex-col justify-center space-y-6">
                 <div className="space-y-4">
-                  <Badge className="bg-green-100 text-green-800 hover:bg-green-200 w-fit text-sm">🌱 Sustainable Future</Badge>
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl 2xl:text-7xl/none text-green-900">
-                    Building a Greener Tomorrow, Today
+                  <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-3xl 2xl:text-7xl/none text-green-900">
+                    PROGRAMA DE GESTIÓN AMBIENTAL FCNyM - UNLP
                   </h1>
                   <p className="max-w-[800px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
-                    Join the movement towards sustainable living. Discover innovative eco-solutions that protect our
-                    planet while creating a better future for generations to come.
+                    “Mucha gente pequeña, en lugares pequeños, haciendo cosas pequeñas, pueden cambiar el mundo”. Eduardo Galeano
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white text-lg px-8 py-4">
-                    Start Your Journey
-                    <Leaf className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-50 text-lg px-8 py-4">
-                    Learn More
+                  <Button href="#conocer-mas" size="lg" className="bg-green-600 hover:bg-green-700 cursor-pointer text-white text-lg px-8 py-4">
+                    Conocer más
                   </Button>
                 </div>
                 <div className="flex items-center gap-6 text-base text-green-600">
@@ -106,8 +110,8 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="solutions" className="w-full py-12 md:py-24 lg:py-32">
+        {/* Separacion de residuos */}
+        <section id="separacion-residuos" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <div className="space-y-4">
@@ -158,8 +162,8 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Impact Statistics */}
-        <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600">
+        {/* impacto */}
+        <section id="impacto" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <div className="space-y-4">
@@ -194,8 +198,8 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+        {/* Nosotros */}
+        <section id="nosotros" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-20 xl:grid-cols-[1fr_700px] xl:gap-24">
               <div className="flex flex-col justify-center space-y-6">
@@ -237,8 +241,8 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-green-100">
+        {/* Novedades */}
+        <section id="novedades" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-green-100">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1400px]">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -267,9 +271,9 @@ export default function Landing() {
         </section>
       </main>
 
-      {/* Footer */}
+      {/* Footer - Contacto */}
       <footer
-        id="contact"
+        id="contacto"
         className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-green-200 bg-green-900 text-green-100"
       >
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 max-w-[1400px]">
