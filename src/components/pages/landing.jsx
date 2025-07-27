@@ -225,11 +225,12 @@ export default function Landing() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-[1500px] items-center gap-8 py-12 sm:grid-cols-2 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-              {/* div del grafico */}
-              <div className="w-full flex items-center justify-center order-1 lg:order-2">
-                <div className="w-full max-w-[500px] lg:max-w-none">
-                  <div className= "bg-white p-4 md:p-5 rounded-xl shadow-lg border-2 border-green-100 w-full">
+            {/* Grid layout for chart and additional content */}
+            <div className="mx-auto w-full py-8 md:py-12">
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16">
+                {/* Left column - Chart */}
+                <div className="w-full">
+                  <div className="bg-white p-4 md:p-5 lg:p-6 rounded-xl shadow-lg border-2 border-green-100">
                     <ChartFilter 
                       onFilterChange={handleFilterChange}
                       initialFilters={chartFilters}
@@ -238,8 +239,34 @@ export default function Landing() {
                       type={chartFilters.type}
                       year={chartFilters.year}
                       month={chartFilters.month}
-                      className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]"
+                      className="w-full h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px]"
                     />
+                  </div>
+                </div>
+                
+                {/* Right column - Your additional content */}
+                <div className="w-full">
+                  <div className="bg-white/10 backdrop-blur-sm p-4 md:p-5 lg:p-6 rounded-xl border border-white/20 h-full flex flex-col justify-center">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                      Ejemplo de contenido adicional
+                    </h3>
+                    <p className="text-green-100 text-base md:text-lg leading-relaxed">
+                      Aquí podés agregar imágenes, estadísticas adicionales, texto explicativo 
+                      o cualquier otro contenido que complemente el gráfico.
+                    </p>
+                    {/* Example for images */}
+                    {/* <div className="mt-4 space-y-4">
+                      <Image 
+                        src={images.impacto.ejemplo1} 
+                        alt="Descripción" 
+                        className="rounded-lg shadow-lg w-full"
+                      />
+                      <Image 
+                        src={images.impacto.ejemplo2} 
+                        alt="Descripción" 
+                        className="rounded-lg shadow-lg w-full"
+                      />
+                    </div> */}
                   </div>
                 </div>
               </div>
