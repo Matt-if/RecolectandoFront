@@ -61,11 +61,11 @@ export default function Landing() {
       </UnauthenticatedOnly>
       
       <main className="flex-1">
-        {/* Inicio */}
-        <section id="inicio" className="w-full py-2 md:py-6 lg:py-8 xl:py-3 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1820px]">
+        {/* Inicio (xl:pt-1 define padding entre titulo y container) */}
+        <section id="inicio" className="w-full min-h-screen pt-2 pb-8 md:pt-4 md:pb-12 lg:pt-6 lg:pb-16 xl:pt-1 xl:pb-20 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1820px] h-full flex flex-col justify-center">
             {/* Logo y Título */}
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-2 mb-2">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-2 mb-8 lg:mb-2">
               <div className="flex-shrink-0">
                 <Image 
                   src={images.logos.logoRecortado} 
@@ -127,7 +127,7 @@ export default function Landing() {
         </section>
 
         {/* impacto */}
-        <section id="impacto" className="w-full py-12 md:py-24 lg:py-18 bg-gradient-to-r from-green-600 to-emerald-600">
+        <section id="impacto" className="w-full min-h-screen py-12 md:py-24 lg:py-20 bg-gradient-to-r from-green-600 to-emerald-600">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <div className="space-y-4">
@@ -139,9 +139,9 @@ export default function Landing() {
             </div>
             <div className="mx-auto grid max-w-[1500px] items-center gap-8 py-12 sm:grid-cols-2 lg:grid-cols-2 lg:gap-16 xl:gap-20">
               {/* div del grafico */}
-              <div className="flex items-center justify-center">
-                <div className="w-full max-w-[900px]">
-                  <div className="bg-white p-5 rounded-xl shadow-lg border-2 border-green-100 w-full">
+              <div className="w-full flex items-center justify-center order-1 lg:order-2">
+                <div className="w-full max-w-[500px] lg:max-w-none">
+                  <div className= "bg-white p-4 md:p-5 rounded-xl shadow-lg border-2 border-green-100 w-full">
                     <ChartFilter 
                       onFilterChange={handleFilterChange}
                       initialFilters={chartFilters}
@@ -150,7 +150,7 @@ export default function Landing() {
                       type={chartFilters.type}
                       year={chartFilters.year}
                       month={chartFilters.month}
-                      className="w-full h-[400px] lg:h-[450px] xl:h-[450px]"
+                      className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]"
                     />
                   </div>
                 </div>
