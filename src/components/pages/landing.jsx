@@ -568,6 +568,159 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* Preguntas Frecuentes */}
+        <section id="preguntas-frecuentes" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-green-100">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1600px]">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl xl:text-6xl text-green-900">
+                  Preguntas Frecuentes
+                </h2>
+                <p className="max-w-[1000px] text-green-700 md:text-xl lg:text-xl xl:text-2xl leading-relaxed">
+                  Todo lo que necesitás saber sobre el Programa de Gestión Ambiental
+                </p>
+              </div>
+            </div>
+
+            {/* Grid de preguntas */}
+            <div className="mx-auto grid max-w-[1500px] items-start gap-8 py-12 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              {/* Pregunta 1 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                      <Target className="h-6 w-6 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Qué es el Programa de Gestión Ambiental?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Es un programa de la FCNyM-UNLP que gestiona integralmente los residuos de la facultad 
+                    mediante separación en origen, compostaje y reciclaje. También realizamos actividades 
+                    de educación ambiental para promover prácticas sustentables.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Pregunta 2 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                      <Users className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Cómo puedo participar siendo estudiante?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Podés participar separando correctamente tus residuos, asistiendo a nuestros talleres, 
+                    postulándote para una beca del programa, o simplemente difundiendo las buenas prácticas 
+                    ambientales entre tus compañeros.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Pregunta 3 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+                      <Recycle className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Qué residuos se pueden compostar?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Residuos orgánicos de origen vegetal como yerba, café, cáscaras de frutas y verduras, 
+                    servilletas de papel, y cáscaras de huevo. NO se compostan restos de carne, lácteos 
+                    o aceites.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Pregunta 4 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                      <TreePine className="h-6 w-6 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Qué pasa con el compost que se produce?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    El compost producido se utiliza en el vivero de la facultad para el crecimiento de plantas 
+                    y árboles. De esta manera cerramos el ciclo y contribuimos al mantenimiento de los 
+                    espacios verdes de la FCNyM.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Pregunta 5 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                      <TrendingUp className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Cuál es el impacto real del programa?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Hemos logrado reducir significativamente los residuos enviados al relleno sanitario, 
+                    procesamos toneladas de material reciclable anualmente y generamos conciencia ambiental 
+                    en miles de personas de la comunidad universitaria.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Pregunta 6 */}
+              <Card className="border-green-200 bg-white hover:border-green-300 transition-all duration-300 hover:shadow-lg h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+                      <Mail className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900 mb-3">
+                      ¿Cómo puedo contactarme para más información?
+                    </h3>
+                  </div>
+                  <p className="text-green-700 text-base leading-relaxed flex-grow">
+                    Podés acercarte a nuestras oficinas en la Secretaría de Extensión de la FCNyM, 
+                    seguir nuestras redes sociales o participar en alguno de nuestros talleres y charlas 
+                    que realizamos regularmente.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Call to Action */}
+            <div className="flex flex-col items-center justify-center space-y-6 text-center mt-12">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-green-900">
+                  ¿Tenés más preguntas?
+                </h3>
+                <p className="max-w-[600px] text-green-700 text-lg leading-relaxed">
+                  No dudes en contactarnos. Estamos siempre dispuestos a resolver tus dudas y ayudarte a formar parte del cambio.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button href="#contacto" className="bg-green-600 hover:bg-green-700 px-8 py-3">
+                  Contactanos
+                </Button>
+                <Button href="#novedades" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3">
+                  Ver Próximos Talleres
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer - Contacto */}
