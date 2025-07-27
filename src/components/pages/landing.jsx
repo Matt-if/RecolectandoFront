@@ -3,7 +3,7 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Card, CardContent } from "../ui/card"
 import { Badge } from "../ui/badge"
-import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp, Mail, Phone, MapPin} from "lucide-react"
+import { Leaf, TreePine, Droplets, Sun, Recycle, Wind, Users, Target, TrendingUp, Mail, Phone, MapPin, Menu, X} from "lucide-react"
 import { UnauthenticatedOnly } from '../auth/ConditionalRender'
 import WeightWasteTypeBySector from '../charts/weight-wasteType-by-sector'
 import ChartFilter from '../ui/chartFilter'
@@ -17,9 +17,16 @@ export default function Landing() {
     month: null
   });
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleFilterChange = (newFilters) => {
     setChartFilters(newFilters);
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Header */}
@@ -30,7 +37,9 @@ export default function Landing() {
               <Image src={images.logos.logoRecortado} alt="Logo" className="h-20 w-20 text-green-600" />
               <span className="ml-2 text-xl font-bold text-green-800 hidden sm:inline" >PGA</span>
             </a>
-            <nav className="ml-auto flex items-center gap-6 sm:gap-6">
+
+            {/* Desktop Navigation - Hide on mobile/tablet */}
+            <nav className="ml-auto hidden lg:flex items-center gap-6">
               <a href="#impacto" className="text-sm font-medium text-green-700 hover:text-green-600 transition-colors">
                 Impacto
               </a>
@@ -56,7 +65,86 @@ export default function Landing() {
                 Iniciar Sesión
               </Button>
             </nav>
+
+            {/* Mobile Burger Menu Button - Show only on mobile/tablet */}
+            <button
+              className="lg:hidden p-2 text-green-700 hover:text-green-600"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMenuOpen && (
+            <div className="absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-green-100 lg:hidden">
+              <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a 
+                  href="#impacto" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Impacto
+                </a>
+                <a 
+                  href="#nosotros" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Nosotros
+                </a>
+                <a 
+                  href="#separacion-residuos" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Separación de Residuos
+                </a>
+                <a 
+                  href="#novedades" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Novedades
+                </a>
+                <a 
+                  href="#conocer-mas" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Conocer más
+                </a>
+                <a 
+                  href="#preguntas-frecuentes" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Preguntas Frecuentes
+                </a>
+                <a 
+                  href="#contacto" 
+                  className="text-base font-medium text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contacto
+                </a>
+                <Button 
+                  href="/login" 
+                  size="default" 
+                  variant="outline" 
+                  className="bg-green-600 hover:bg-green-700 cursor-pointer text-white text-lg px-8 py-4 w-fit mt-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Iniciar Sesión
+                </Button>
+              </nav>
+            </div>
+          )}
         </header>
       </UnauthenticatedOnly>
       
