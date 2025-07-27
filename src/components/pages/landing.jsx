@@ -329,56 +329,63 @@ export default function Landing() {
                 </h2>
               </div>
             </div>
+
             <div className="mx-auto grid max-w-[1500px] items-start gap-8 py-12 lg:grid-cols-3 lg:gap-12 xl:gap-16">
-              <Card className="border-green-200 bg-transparent hover:border-green-300 transition-colors h-full">
+              <Card className="border-green-200 bg-gradient-to-br from-green-400 to-emerald-600 hover:border-green-300 transition-all duration-300 hover:shadow-xl h-full">
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-green-900">INORGÁNICOS RECICLABLES</h3>
-                    <p className="text-center text-green-700 text-lg leading-relaxed">
+                    <h3 className="text-2xl font-bold text-center text-green-900">INORGÁNICOS RECICLABLES</h3>
+                    <p className="text-center text-white text-lg leading-relaxed">
                       Residuos que no tienen origen biológico y fueron generados mediante algún proceso.
-                      Vidrios, plástico y goma, metales, textiles, materiales inertes. 
-                      Se caracterizan por ser residuos que pueden ser recuperados para su reutilización o reciclado.
+                      Se caracterizan por poder ser recuperados para su reutilización o reciclado.
+                    </p>
+                    <p className="text-center text-white text-xl leading-relaxed">
+                      <b>Vidrios, plástico y goma, metales, textiles, materiales inertes. </b>
                     </p>
                   </div>
                   {/* Sección de imagen - ocupa 40% del espacio */}
                   <div className="flex-[2] flex items-center justify-center">
                     <Image src={images.separacion_residuos.tacho_verde} 
                     alt="Tacho verde"
-                    className="h-70 w-70 object-contain mix-blend-multiply"
+                    className="h-70 w-70 object-contain"
                     />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
+              <Card className="border-green-200 bg-gradient-to-br from-green-400 to-emerald-600 hover:border-green-300 transition-all duration-300 hover:shadow-xl h-full">
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-green-900">NO RECICLABLES</h3>
-                    <p className="text-center text-green-700 text-lg leading-relaxed">
+                    <h3 className="text-2xl font-bold text-center text-green-900">NO RECICLABLES</h3>
+                    <p className="text-center text-white text-lg leading-relaxed">
                       Materiales que no pueden reutilizarse por composición o contaminación.
-                      Papeles y cartones sucios, cigarrillos.
+                    </p>
+                    <p className="text-center text-white text-xl leading-relaxed">
+                      <b>Papeles y cartones sucios, cigarrillos.</b>
                     </p>
                   </div>
                   {/* Sección de imagen - ocupa 40% del espacio */}
                   <div className="flex-[2] flex items-center justify-center">
                     <Image src={images.separacion_residuos.tacho_negro} 
                     alt="Tacho negro"
-                    className="h-70 w-70 object-contain mix-blend-multiply"
+                    className="h-70 w-70 object-contain"
                     />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:border-green-300 transition-colors h-full">
+              <Card className="border-green-200 bg-gradient-to-br from-green-400 to-emerald-600 hover:border-green-300 transition-all duration-300 hover:shadow-xl h-full">
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-green-900">ORGÁNICOS DE ORIGEN VEGETAL COMPOSTABLES</h3>
-                    <p className="text-center text-green-700 text-lg leading-relaxed">
-                      Yerba, café, infusiones, cáscaras, carozos y restos de frutas/verduras, servilletas de papel, cáscaras de huevo (único material de origen animal!).
+                    <h3 className="text-2xl font-bold text-center text-green-900">ORGÁNICOS DE ORIGEN VEGETAL COMPOSTABLES</h3>
+                    <p className="text-center text-white text-lg leading-relaxed">
                       Se caracterizan por ser fácilmente degradables por bacterias para producir compost.
+                    </p>
+                    <p className="text-center text-white text-xl leading-relaxed">
+                      <b>Yerba, café, infusiones, cáscaras, carozos y restos de frutas/verduras, servilletas de papel, cáscaras de huevo (único material de origen animal!).</b>
                     </p>
                   </div>
                   {/* Sección de imagen - ocupa 40% del espacio */}
@@ -707,13 +714,11 @@ export default function Landing() {
                       <Target className="h-6 w-6 text-green-600" />
                     </div>
                     <h3 className="text-xl font-bold text-green-900 mb-3">
-                      ¿Qué es el Programa de Gestión Ambiental?
+                      ¿Por qué no puedo tirar residuos de origen animal con los residuos orgánicos compostables si es materia orgánica?
                     </h3>
                   </div>
                   <p className="text-green-700 text-base leading-relaxed flex-grow">
-                    Es un programa de la FCNyM-UNLP que gestiona integralmente los residuos de la facultad 
-                    mediante separación en origen, compostaje y reciclaje. También realizamos actividades 
-                    de educación ambiental para promover prácticas sustentables.
+                    Porque no.
                   </p>
                 </CardContent>
               </Card>
