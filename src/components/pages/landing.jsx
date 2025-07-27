@@ -730,13 +730,23 @@ export default function Landing() {
       >
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 max-w-[1400px]">
           <div className="flex items-center gap-2">
-            <Leaf className="h-6 w-6 text-green-400" />
-            <span className="font-bold text-green-100">EcoVision</span>
+            <span className="font-bold text-green-100">PROGRAMA DE GESTIÓN AMBIENTAL FCNyM - UNLP</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span>Desarrollado por </span>
+            <a 
+              href="https://linkedin.com/in/tu-perfil" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-green-300 hover:text-green-200 underline decoration-green-300 hover:decoration-green-200 transition-colors duration-200 font-medium"
+            >
+              Matías [Tu Apellido]
+            </a>
           </div>
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-1">
               <Mail className="h-4 w-4" />
-              <span>hello@ecovision.com</span>
+              <span>pga@mail.com</span>
             </div>
             <div className="flex items-center gap-1">
               <Phone className="h-4 w-4" />
@@ -744,7 +754,7 @@ export default function Landing() {
             </div>
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
-              <span>San Francisco, CA</span>
+              <span>La Plata, Buenos Aires, Argentina</span>
             </div>
           </div>
         </div>
