@@ -76,9 +76,10 @@ src/
 ## Environment Variables
 
 ``` env
-VITE_API_URL="http://localhost:8080/api/v1"
-VITE_LOGIN_URL="http://localhost:8080/api/v1/auth/login"
-VITE_REFRESH_URL="http://localhost:8080/api/v1/auth/refresh"
+VITE_LOGIN_URL="/api/v1/auth/login"
+VITE_REGISTER_URL="/api/v1/auth/register"
+VITE_REFRESH_URL="/api/v1/auth/refresh"
+VITE_LOGOUT_URL="/api/v1/auth/logout"
 VITE_TOKEN_REFRESH_MARGIN=300
 ```
 
