@@ -32,12 +32,26 @@ A modern web application for tracking waste collection activities by registered 
 
 3. **Environment Setup**
    
-   Create a `.env` file in the root directory:
+   If you want full funcionalities you must create a `.env` file in the root directory to work with the back-end side (see [API Integration]())
    ```env
-   VITE_API_URL="http://localhost:8080/api/v1"
-   VITE_LOGIN_URL="http://localhost:8080/api/v1/auth/login"
-   VITE_REFRESH_URL="http://localhost:8080/api/v1/auth/refresh"
-   VITE_RETRIEVAL_URL="http://localhost:8080/api/v1/retrieval"
+      VITE_API_URL="/api/v1"
+
+      # Auth
+      VITE_LOGIN_URL="/api/v1/auth/login"
+      VITE_REGISTER_URL="/api/v1/auth/register"
+      VITE_REFRESH_URL="/api/v1/auth/refresh"
+      VITE_LOGOUT_URL="/api/v1/auth/logout"
+
+      # Retrievals
+      VITE_RETRIEVAL_URL="/api/v1/retrievals"
+      VITE_RETRIEVAL_TYPES_URL="/api/v1/retrievals/types"
+
+      #Buildings and sectors
+      VITE_BUILDINGS_URL="/api/v1/buildings"
+      VITE_SECTORS_FROM_BUILDING_BY_ID_URL="/api/v1/buildings/sectors" #/{id}
+
+      # Analytics
+      VITE_ANALYTICS_URL="/api/v1/analytics"
    ```
 
 4. **Start the development server**
@@ -80,8 +94,8 @@ src/
 
 This project implements a robust JWT-based authentication system with:
 
-- **Access Tokens**: Short-lived (15-30 min) stored in sessionStorage
-- **Refresh Tokens**: Long-lived (7-30 days) stored in localStorage
+- **Access Tokens**: Short-lived stored in sessionStorage
+- **Refresh Tokens**: Long-lived stored in localStorage
 - **Automatic Token Renewal**: Seamless background token refresh
 - **Role-Based Access Control**: Different permissions for users and admins
 
@@ -117,16 +131,6 @@ This project is currently **under active development**. Planned features include
 - [ ] Mobile app companion
 - [ ] Data export functionality
 
-## 🤝 Contributing
-
-We welcome contributions! To get started:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## 📜 Scripts
 
 - `npm run dev` - Start development server
@@ -142,11 +146,3 @@ If you encounter any issues or have suggestions, please [open an issue](https://
 
 This project is licensed under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
-
-- Thanks to all contributors and volunteers
-- Built with ❤️ for environmental sustainability
-
----
-
-**Made with 🌱 by the Recolectando! team**
