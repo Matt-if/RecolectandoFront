@@ -94,7 +94,7 @@ export default function Register() {
         lastname: formData.lastname || null,
       }
 
-      const response = await authenticatedFetch(import.meta.env.VITE_API_URL + "/auth/register", {
+      const response = await authenticatedFetch(import.meta.env.VITE_CREATE_USER_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ export default function Register() {
         }, 3000)
       } else {
         const errorData = await response.json()
-        setApiError(errorData.message || "Error al registrar el usuario")
+        setApiError(errorData.msg || "Error al registrar el usuario")
       }
     } catch (error) {
       setApiError("Error de conexión. Intente nuevamente.")
