@@ -6,12 +6,22 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with nginx
-FROM nginx:stable-alpine
+# Stage 2: Serve with Nginx
+FROM nginx:alpine
+
+# Remove default nginx static assets
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy static assets from builder stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Fix: Copy to conf.d/default.conf instead of nginx.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy custom nginx config template (Note the .template extension)
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
+
+# Nginx Alpine image has a built-in feature:
+# It looks for files in /etc/nginx/templates/*.template
+# runs envsubst on them, and outputs to /etc/nginx/conf.d/
+# So we just need to pass the ENV var in ECS.
 
 # Install curl for health checks
 RUN apk add --no-cache curl
