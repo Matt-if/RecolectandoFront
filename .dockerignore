@@ -16,3 +16,11 @@ build
 .prettier*
 .editorconfig
 .DS_Store
+
+#Ignore environment variable files
+# .env is intentionally not ignored to allow for environment variable configuration in the container
+.env.prod
+.env.local
+.env.development
+.env.test
+.env.production

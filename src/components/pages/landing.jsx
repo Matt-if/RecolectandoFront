@@ -855,12 +855,12 @@ export default function Landing() {
           <div className="flex items-center gap-1">
             <span>Desarrollado por </span>
             <a 
-              href="https://linkedin.com/in/tu-perfil" 
+              href="https://www.linkedin.com/in/matias-favorito/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-green-300 hover:text-green-200 underline decoration-green-300 hover:decoration-green-200 transition-colors duration-200 font-medium"
             >
-              Matías [Tu Apellido]
+              Matías Favorito
             </a>
           </div>
           <div className="flex items-center gap-6 text-sm">
