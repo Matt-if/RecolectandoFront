@@ -247,6 +247,7 @@ export default function Landing() {
                 {/* Right column - Your additional content */}
                 <div className="w-full">
                   <div className="bg-white/10 backdrop-blur-sm p-4 md:p-5 lg:p-6 rounded-xl border border-white/20 h-full flex flex-col justify-center">
+                    {/*
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                       Ejemplo de contenido adicional
                     </h3>
@@ -254,7 +255,7 @@ export default function Landing() {
                       Aquí podés agregar imágenes, estadísticas adicionales, texto explicativo 
                       o cualquier otro contenido que complemente el gráfico.
                     </p>
-                    {/* Example for images */}
+                     Example for images */}
                     {/* <div className="mt-4 space-y-4">
                       <Image 
                         src={images.impacto.ejemplo1} 
