@@ -247,6 +247,7 @@ export default function Landing() {
                 {/* Right column - Your additional content */}
                 <div className="w-full">
                   <div className="bg-white/10 backdrop-blur-sm p-4 md:p-5 lg:p-6 rounded-xl border border-white/20 h-full flex flex-col justify-center">
+                    {/*
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                       Ejemplo de contenido adicional
                     </h3>
@@ -254,7 +255,7 @@ export default function Landing() {
                       Aquí podés agregar imágenes, estadísticas adicionales, texto explicativo 
                       o cualquier otro contenido que complemente el gráfico.
                     </p>
-                    {/* Example for images */}
+                     Example for images */}
                     {/* <div className="mt-4 space-y-4">
                       <Image 
                         src={images.impacto.ejemplo1} 
@@ -297,20 +298,6 @@ export default function Landing() {
                     desarrollamos el “Programa de Gestión Ambiental” (PGA).
                   </p>
                 </div>
-                <ul className="grid gap-4 py-6">
-                  <li className="flex items-center gap-3">
-                    <Target className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">Programa de Gestión Ambiental (PGA)</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <TrendingUp className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">En constante crecimiento</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Recycle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-green-700 text-lg">Reciclar es respetar el medio ambiente</span>
-                  </li>
-                </ul>
               </div>
               <div className="flex items-center justify-center">
                 <Image  src={images.nosotros.compostaje}/>
@@ -335,7 +322,7 @@ export default function Landing() {
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-center text-green-900">INORGÁNICOS RECICLABLES</h3>
+                    <h3 className="text-2xl font-bold text-center text-green-900">Residuos orgánicos compostables</h3>
                     <p className="text-center text-white text-lg leading-relaxed">
                       Residuos que no tienen origen biológico y fueron generados mediante algún proceso.
                       Se caracterizan por poder ser recuperados para su reutilización o reciclado.
@@ -358,7 +345,7 @@ export default function Landing() {
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-center text-green-900">NO RECICLABLES</h3>
+                    <h3 className="text-2xl font-bold text-center text-green-900">Residuos no reciclables</h3>
                     <p className="text-center text-white text-lg leading-relaxed">
                       Materiales que no pueden reutilizarse por composición o contaminación.
                     </p>
@@ -380,7 +367,7 @@ export default function Landing() {
                 <CardContent className="flex flex-col h-full p-8">
                   {/* Sección de texto - ocupa 60% del espacio */}
                   <div className="flex-[3] flex flex-col justify-start space-y-6">
-                    <h3 className="text-2xl font-bold text-center text-green-900">ORGÁNICOS DE ORIGEN VEGETAL COMPOSTABLES</h3>
+                    <h3 className="text-2xl font-bold text-center text-green-900">Residuos inorgánicos reciclables</h3>
                     <p className="text-center text-white text-lg leading-relaxed">
                       Se caracterizan por ser fácilmente degradables por bacterias para producir compost.
                     </p>
@@ -718,7 +705,8 @@ export default function Landing() {
                     </h3>
                   </div>
                   <p className="text-green-700 text-base leading-relaxed flex-grow">
-                    Porque no.
+                    Las composteras no alcanzan normalmente la temperatura (más de 60 °C) necesaria para destruir patógenos peligrosos y descomponer las grasas y proteínas animales; 
+                    por lo tanto, en lugar de convertirse en abono, estos restos se pudren, generan olores tóxicos y atraen plagas.
                   </p>
                 </CardContent>
               </Card>
@@ -853,7 +841,7 @@ export default function Landing() {
             <span className="font-bold text-green-100">PROGRAMA DE GESTIÓN AMBIENTAL FCNyM - UNLP</span>
           </div>
           <div className="flex items-center gap-1">
-            <span>Desarrollado por </span>
+            <span>Desarrollado y mantenido por </span>
             <a 
               href="https://www.linkedin.com/in/matias-favorito/" 
               target="_blank" 
@@ -864,14 +852,16 @@ export default function Landing() {
             </a>
           </div>
           <div className="flex items-center gap-6 text-sm">
+            {/* Contact info - placeholders for now 
             <div className="flex items-center gap-1">
               <Mail className="h-4 w-4" />
-              <span>pga@mail.com</span>
+              <span>No Disponible aun</span>
             </div>
             <div className="flex items-center gap-1">
               <Phone className="h-4 w-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>No Disponible aun</span>
             </div>
+            */}
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
               <span>La Plata, Buenos Aires, Argentina</span>

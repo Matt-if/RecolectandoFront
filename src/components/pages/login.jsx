@@ -1,9 +1,10 @@
 
-import { Leaf, Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { Leaf, Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { context } from "../context"
 import { jwtDecode } from "jwt-decode";
+import { images } from '../../assets/images'
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
@@ -69,19 +70,24 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-4">
+    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-4">
+      <button
+        type="button"
+        onClick={() => navigate("/")}
+        className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-lg border border-green-200 bg-white/90 px-3 py-2 text-sm font-medium text-green-800 shadow-sm transition-colors hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500/20"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Volver
+      </button>
       <div className="w-full max-w-md">
         {/* Logo and Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-xl opacity-20"></div>
-              <div className="relative bg-white rounded-full p-3 shadow-lg">
-                <Leaf className="h-8 w-8 text-green-600" />
-              </div>
+              <img src={images.logos.logoRecortado} alt="PGA Logo" className="h-30 w-30" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-green-900 mb-2">Bienvenido a EcoVision</h1>
+          <h1 className="text-2xl font-bold text-green-900 mb-2">Bienvenido a PGA</h1>
           <p className="text-green-700">Inicia sesion para registrar recolecciones !</p>
         </div>
 
