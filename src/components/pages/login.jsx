@@ -4,6 +4,7 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { context } from "../context"
 import { jwtDecode } from "jwt-decode";
+import { images } from '../../assets/images'
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
@@ -75,13 +76,10 @@ export default function Login() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full blur-xl opacity-20"></div>
-              <div className="relative bg-white rounded-full p-3 shadow-lg">
-                <Leaf className="h-8 w-8 text-green-600" />
-              </div>
+              <img src={images.logos.logoRecortado} alt="PGA Logo" className="h-30 w-30" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-green-900 mb-2">Bienvenido a EcoVision</h1>
+          <h1 className="text-2xl font-bold text-green-900 mb-2">Bienvenido a PGA</h1>
           <p className="text-green-700">Inicia sesion para registrar recolecciones !</p>
         </div>
 
