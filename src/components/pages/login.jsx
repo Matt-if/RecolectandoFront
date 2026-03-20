@@ -1,5 +1,5 @@
 
-import { Leaf, Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { Leaf, Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { context } from "../context"
@@ -70,7 +70,15 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-4">
+    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-4">
+      <button
+        type="button"
+        onClick={() => navigate("/")}
+        className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-lg border border-green-200 bg-white/90 px-3 py-2 text-sm font-medium text-green-800 shadow-sm transition-colors hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500/20"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Volver
+      </button>
       <div className="w-full max-w-md">
         {/* Logo and Header */}
         <div className="text-center mb-8">
