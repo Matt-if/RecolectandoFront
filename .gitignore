@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 #Environment variables
-# .env files are ignored by default, but you can specify which ones to ignore or include
+.env
 .env.prod
 .env.local
 .env.development
